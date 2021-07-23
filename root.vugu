@@ -1,0 +1,74 @@
+<div class="content">
+
+<h1>
+    <button @click="c.HandleCat(event)">Get a cat!</button>
+    <div vg-if='c.IsLoading'>Loading...</div>
+    <div vg-if='len(c.Cats) > 0'>
+        <div vg-for='c.Cats'>
+            <img :src='value.URL' alt="cat"></img>
+        </div>
+    </div>
+</div>
+
+<script type="application/x-go">
+import (
+    "encoding/json"
+    "net/http"
+    "log"
+)
+
+
+type Root struct {
+    IsLoading bool `vugu:"data"`
+    Cats []Cat `vugu:"data"`
+}
+
+type Cat struct {
+    ID string  `json:"id"`
+    URL string `json:"url"`
+    Width int `json:"width"`
+    Height int `json:"height"`
+    Image string
+}
+
+
+func (c *Root) HandleCat(event vugu.DOMEvent) {
+
+    // c.Cats = []Cat{}
+
+    ee := event.EventEnv()
+
+    go func() {
+
+        ee.Lock()
+        c.IsLoading = true
+        ee.UnlockRender()
+        
+        client := &http.Client{}
+        req, _ := http.NewRequest("GET", "https://api.thecatapi.com/v1/images/search?limit=3&size=full", nil)
+        req.Header.Set("x-api-key", "710c211b-1f51-4f36-9836-48e589130683")
+        res, err := client.Do(req)
+        if err != nil {
+            log.Printf("Error fetching: %v", err)
+            return
+        }
+        defer res.Body.Close()
+
+        
+        var newcat []Cat
+        err = json.NewDecoder(res.Body).Decode(&newcat)
+        if err != nil {
+            log.Printf("Can't unmarshal the json: %v", err)
+            return
+        }
+
+        ee.Lock()
+        defer ee.UnlockRender()
+        c.Cats = newcat
+        c.IsLoading = false
+    }()
+}
+
+
+
+</script>
