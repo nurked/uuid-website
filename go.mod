@@ -2,7 +2,7 @@ module github.com/vugu-examples/simple
 
 go 1.16
 
-replace github.com/uuid6/uuid6go-proto => C:\Users\Keras\source\golang\uuid6go-proto
+// replace github.com/uuid6/uuid6go-proto => C:\Users\Keras\source\golang\uuid6go-proto
 
 require (
 	github.com/vugu/vgrouter v0.0.0-20200725205318-eeb478c42e5d // indirect
