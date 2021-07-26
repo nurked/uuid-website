@@ -1,13 +1,7 @@
-# simple
-Simple Vugu Example
+# UUID V6,7,8 website
 
-You can get started with:
+Written with tremendous love and respect for gophers. We <3 gophers. 
 
-```sh
-go get -u github.com/vugu/vgrun
-vgrun -new-from-example=simple myexample
-cd myexample
-vgrun devserver.go
-```
+Uses http://vugu.org for everything. Generates UUIDs on the fly in WASM.
 
-Then browse to the running server: http://localhost:8844/
+Use http://vugu.org! Glory to the HYPNOTHOAD!
