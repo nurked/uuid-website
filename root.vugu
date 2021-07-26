@@ -39,22 +39,26 @@
         }
 
         .timestamp {
-            color:rgb(87 167 87);
+            color:#428042;
         }
 
         .version {
             color:rgb(255, 48, 48);
         }
         .variant {
-            color:rgb(136, 65, 187);
+            color:#caa898;
         }
 
         .random {
-            color: gray;
+            color: #8a04af;
         }
 
         .precision {
-            color: gold;
+            color: #8d7300;
+        }
+
+        .node {
+            color: #258184;
         }
 
         .bits {
@@ -119,6 +123,9 @@
                                 <span class="counter">Counter</span> &ndash; Is your flux capacitor overcharged and you are producing millions of UUIDs per milli-second? Use counter to keep them well ordered. 
                             </li>
                             <li>
+                                <span class="node">Node data</span> &ndash; You can store an information about a machine that produced this UUID in this block.
+                            </li>
+                            <li>
                                 <span class="random">Random data</span> &ndash; Add some randomity at the end to ensure that your UUID is totally unique and no other UUIDs are just like it. 
                             </li>
                             <li>
@@ -165,7 +172,7 @@ type Root struct {
 
 func (c *Root) Init(ctx vugu.InitCtx) {
         var gen uuid.UUIDv7Generator
-        c.counterPrecisionBits = 0
+        c.counterPrecisionBits = 8
         c.nodePrecisionBits = 4
         c.node = 7
         c.subsecondPrecisionLength = 16
