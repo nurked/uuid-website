@@ -94,12 +94,12 @@
                     <div class="col">Let me explain you how it works. Take a look, we have a freshly generated UUIDv7 right here:</div>
                 </div>
                 <div class="row fs-4">
-                    <div class="col text-center display-4 text-monospace">
+                    <div class="col text-center display-4 font-monospace">
                         <span vg-content="c.uuid"></span>
                     </div>
                 </div>
 
-                <div vg-if="len(c.bits) > 0" class="bitcode  text-monospace">
+                <div vg-if="len(c.bits) > 0" class="bitcode  font-monospace">
                     <div vg-for="c.bits" vg-key="key"> 
                         <span :class="c.getClass(key)" vg-content="c.display(value)"></span>
                     </div>
