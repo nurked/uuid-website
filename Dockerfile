@@ -11,13 +11,13 @@ RUN go install github.com/vugu/vugu/cmd/vugugen
 RUN go build -o /go/bin/vugugen github.com/vugu/vugu/cmd/vugugen
 RUN go generate
 #RUN ls
-RUN GOOS=js GOARCH=wasm go build -o output.wasm .
+RUN GOOS=js GOARCH=wasm go build -o main.wasm .
 #RUN go build
 
 FROM golang AS prod
 RUN mkdir /go/site
 WORKDIR /go/site
-COPY --from=build /go/uuid-website/output.wasm .
+COPY --from=build /go/uuid-website/main.wasm .
 COPY --from=build /go/uuid-website/prodserver.go .
 COPY --from=build /go/uuid-website/go.mod .
 RUN go mod download github.com/vugu/vugu
