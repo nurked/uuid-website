@@ -130,7 +130,7 @@
         </header>
         <main>
             <div class="container">
-                <div class="row justify-content-center pt-2">
+                <div class="row justify-content-center pt-4 pb-4">
                     
                     <div class="col col-8">
                     <p vg-content='c.t("description-uuid7")'>
@@ -157,16 +157,18 @@
             <div class="container-fluid bg">
             
                 <div vg-if="len(c.bits) > 0" class="row justify-content-center font-monospace">
-                    <div class="box p-2">
-                        <div class="col text-center" style="color:#fdf6e3">
+                    <div class="col text-center p-4">
                             <span vg-content="c.uuid" class="uuid-text display-4"></span>
-                        </div>
-                        <div class="bitcode">
-                            <div vg-for="c.bits" vg-key="key"> 
-                                <span :class="c.getClass(key)" vg-content="c.display(value)"></span>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                        <div class="box p-2">
+                            <div class="bitcode">
+                                <div vg-for="c.bits" vg-key="key"> 
+                                    <span :class="c.getClass(key)" vg-content="c.display(value)"></span>
+                                </div>
                             </div>
                         </div>
-                    </div>
                 </div>
                 <div class="row justify-content-end">
                     <div class="col col-3 d-flex justify-content-center p-2">
