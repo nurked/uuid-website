@@ -1,5 +1,4 @@
 <head>
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet">
@@ -9,7 +8,7 @@
 
 
 
-<body class="">
+<body>
     <style>
         body {
             padding: 0px;
@@ -36,6 +35,21 @@
             grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 2fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 2fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 2fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr; 
             grid-template-rows: 1fr 1fr 1fr 1fr; 
             gap: 0px 0px; 
+            
+        }
+
+        .bg {
+            background-color: #002b36;
+            
+        }
+
+        .explain {
+            padding: 1px 8px 2px 8px;
+            border-radius: 6px;
+        }
+
+        .box {
+            max-width: 600px;
         }
 
         .current-text {
@@ -45,27 +59,31 @@
             align-items: flex-end;
         }
 
+        .uuid-text {
+            color: #fdf6e3;
+        }
+
         .timestamp {
-            color:#428042;
+            color:#859900;
         }
 
         .version {
-            color:rgb(255, 48, 48);
+            color:#dc322f;
         }
         .variant {
-            color:#caa898;
+            color:#d33682;
         }
 
         .random {
-            color: #8a04af;
+            color: #fdf6e3;
         }
 
         .precision {
-            color: #8d7300;
+            color: #b58900;
         }
 
         .node {
-            color: #258184;
+            color: #268bd2;
         }
 
         .bits {
@@ -74,7 +92,7 @@
         }
 
         .counter {
-            color: blue
+            color: #2aa198;
         }
 
         .hex {
@@ -87,19 +105,14 @@
     <div class="content">
         <header>
             <div class="current-text">
-                <h1 class="display-1">Hello, UUIDv7!</h1>
+                <h1 class="display-3">Hello, UUIDv7!</h1>
             </div>
         </header>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 270">
-            <path fill="rgb(17, 17, 108)" fill-opacity="1"
-                d="M0,128L60,149.3C120,171,240,213,360,218.7C480,224,600,192,720,160C840,128,960,96,1080,74.7C1200,53,1320,43,1380,37.3L1440,32L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z">
-            </path>
-        </svg>
         <main>
             <div class="container">
-                <div class="row">
+                <div class="row justify-content-center pt-2">
                     
-                    <div class="col">
+                    <div class="col col-8">
                     <p>
                     A common case for modern applications is to create a unique
                     identifier for use as a primary key in a database table.  This
@@ -118,52 +131,51 @@
                     </div>
                 </div>
                 <div class="row fs-4">
-                    <div class="col text-center display-5 font-monospace p-3">
-                        <span vg-content="c.uuid"></span>
+                    
+                </div>
+            </div>
+            <div class="container-fluid bg">
+            
+                <div vg-if="len(c.bits) > 0" class="row justify-content-center font-monospace">
+                    <div class="box p-2">
+                        <div class="col text-center" style="color:#fdf6e3">
+                            <span vg-content="c.uuid" class="uuid-text display-4"></span>
+                        </div>
+                        <div class="bitcode">
+                            <div vg-for="c.bits" vg-key="key"> 
+                                <span :class="c.getClass(key)" vg-content="c.display(value)"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-end">
+                    <div class="col col-3 d-flex justify-content-center p-2">
+                        <button class="btn btn-primary" @click="c.GetNewUUID(event)">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
+                                <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+                            </svg> 
+                            Get new UUID
+                        </button>
                     </div>
                 </div>
 
-                <div vg-if="len(c.bits) > 0" class="bitcode font-monospace p-3">
-                    <div vg-for="c.bits" vg-key="key"> 
-                        <span :class="c.getClass(key)" vg-content="c.display(value)"></span>
-                    </div>
 
-                </div>
-                <div class="row justify-content-md-center p-3">
-                    <div class="col col-3 d-flex justify-content-center">
-                        <button class="btn btn-primary" @click="c.GetNewUUID(event)">Get new UUID</button>
+            </div>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col col-8 pt-4">
+                        <p><span class="timestamp explain bg">Unix timestamp</span> &ndash; no more flying DeLorians. You always in control and you know where and when this UUID happened. First 36 bits are dedicated for the Unix timestamp. No random bit ordering. No little-endian bits. It is just a number that can be parsed by any computer system. </p>
+                        <p><span class="precision explain bg">Sub-second precision bits</span> &ndash; Need to be more specific about your time? UUIDv7 allows you to store up to 48 bits of sub-second precision. Not just that. The data is encoded with a trickle of magic that allows it to be binary sortable. But we are a very good magicians. We explain all our tricks.</p>
+                        <p><span class="counter explain bg">Counter</span> &ndash; Is your flux capacitor overcharged and you are producing millions of UUIDs per milli-second? Use counter to keep them well ordered. </p>
+                        <p><span class="node explain bg">Node data</span> &ndash; You can store an information about a machine that produced this UUID in this block.</p>
+                        <p><span class="random explain bg">Random data</span> &ndash; Add some randomity at the end to ensure that your UUID is totally unique and no other UUIDs are just like it. </p>
+                        <p><span class="version explain bg">Version</span> &ndash; There are times to be boring for a reason of a backward-compatibility. This field contains the version number to be compatible with UUIDv4. </p>
+                        <p><span class="variant explain bg">Variant</span> &ndash; Even more boring stuff for compatibility with UUIDv4. </p>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col">
-                        <ul>
-                            <li>
-                                <span class="timestamp">Unix timestamp</span> &ndash; no more flying DeLorians. You always in control and you know where and when this UUID happened. First 36 bits are dedicated for the Unix timestamp. No random bit ordering. No little-endian bits. It is just a number that can be parsed by any computer system. 
-                            </li>
-                            <li>
-                                <span class="precision">Sub-second precision bits</span> &ndash; Need to be more specific about your time? UUIDv7 allows you to store up to 48 bits of sub-second precision. Not just that. The data is encoded with a trickle of magic that allows it to be binary sortable. But we are a very good magicians. We explain all our tricks.
-                            </li>
-                            <li>
-                                <span class="counter">Counter</span> &ndash; Is your flux capacitor overcharged and you are producing millions of UUIDs per milli-second? Use counter to keep them well ordered. 
-                            </li>
-                            <li>
-                                <span class="node">Node data</span> &ndash; You can store an information about a machine that produced this UUID in this block.
-                            </li>
-                            <li>
-                                <span class="random">Random data</span> &ndash; Add some randomity at the end to ensure that your UUID is totally unique and no other UUIDs are just like it. 
-                            </li>
-                            <li>
-                                <span class="version">Version</span> &ndash; There are times to be boring for a reason of a backward-compatibility. This field contains the version number to be compatible with UUIDv4. 
-                            </li>
-                            <li>
-                                <span class="variant">Variant</span> &ndash; Even more boring stuff for compatibility with UUIDv4. 
-
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="column">
+                <div class="row justify-content-center">
+                    <div class="col col-8">
                         <p>
                             Special mention to our amazing counter precision encoding algorithm.
                         </p>
@@ -176,13 +188,13 @@
 
         <footer class="footer">
             <div class="container">
-                <div class="row pt-5">
-                    <div class="col">
-                        <p>IETF data tracker location: <a href="https://datatracker.ietf.org/doc/draft-peabody-dispatch-new-uuid-format/">New UUID formats</a></p>
-                        <p>Join the discussion on github <a href="https://github.com/uuid6/uuid6-ietf-draft">uuid6-ietf-draft</a></p>
-                        <p>Generator prototype in golang is avaliable on github <a href="https://github.com/uuid6/uuid6go-proto">uuid6go-proto</a></p>
-                        <p>This website is written in VUGU <a href="https://vugu.org">vugu.org</a></p>
-                        <p>Protocol specifications by <a href="mailto:brad@peabody.io">Brad G. Peabody</a> and <a href="mailto:kydavis@cisco.com">Kyzer R. Davis</a></p>
+                <div class="row pt-5 justify-content-center">
+                    <div class="col col-8">
+                        <p><a href="https://datatracker.ietf.org/doc/draft-peabody-dispatch-new-uuid-format/">IETF: New UUID formats</a></p>
+                        <p><a href="https://github.com/uuid6/uuid6-ietf-draft">Github: uuid6-ietf-draft</a></p>
+                        <p><a href="https://github.com/uuid6/uuid6go-proto">golang generator uuid6go-proto</a></p>
+                        <p><a href="https://vugu.org">site written in vugu</a></p>
+                        <p>Contact: <a href="mailto:brad@peabody.io">Brad G. Peabody</a> and <a href="mailto:kydavis@cisco.com">Kyzer R. Davis</a></p>
                         <p class="text-end">Copyright &copy; 2021</p>
                     </div>
                 </div>
