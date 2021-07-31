@@ -26,6 +26,7 @@
 
         footer {
             background-color: #e6e6e6;
+            font-size:0.75em;
         }
 
         .bitcode {
@@ -99,11 +100,30 @@
             cursor: pointer;
         }
 
-        
+        .langs {
+            float: right;
+            padding:5px;
+        }
+        .lang {
+            text-decoration:none;
+            cursor:pointer;
+        }
+        .lang>img {
+            width: 1.5em;
+            height: 1.5em;
+        }
 
     </style>
     <div class="content">
         <header>
+        <div class="langs">
+        <a class="lang" @click='c.setLang(event, "ru-RU")'>
+            <img src="data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTEyIDUxMiIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMjU2IiBjeT0iMjU2IiBmaWxsPSIjZjBmMGYwIiByPSIyNTYiLz48cGF0aCBkPSJtNDk2LjA3NyAzNDUuMDQzYzEwLjI5MS0yNy43MzMgMTUuOTIzLTU3LjcyOSAxNS45MjMtODkuMDQzcy01LjYzMi02MS4zMS0xNS45MjMtODkuMDQzaC00ODAuMTU0Yy0xMC4yOSAyNy43MzMtMTUuOTIzIDU3LjcyOS0xNS45MjMgODkuMDQzczUuNjMzIDYxLjMxIDE1LjkyMyA4OS4wNDNsMjQwLjA3NyAyMi4yNjF6IiBmaWxsPSIjMDA1MmI0Ii8+PHBhdGggZD0ibTI1NiA1MTJjMTEwLjA3MSAwIDIwMy45MDYtNjkuNDcyIDI0MC4wNzctMTY2Ljk1N2gtNDgwLjE1NGMzNi4xNzEgOTcuNDg1IDEzMC4wMDYgMTY2Ljk1NyAyNDAuMDc3IDE2Ni45NTd6IiBmaWxsPSIjZDgwMDI3Ii8+PGcvPjxnLz48Zy8+PGcvPjxnLz48Zy8+PGcvPjxnLz48Zy8+PGcvPjxnLz48Zy8+PGcvPjxnLz48Zy8+PC9zdmc+" />
+        </a>
+        <a class="lang" @click='c.setLang(event, "en-US")'>
+            <img src="data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTEyIDUxMiIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMjU2IiBjeT0iMjU2IiBmaWxsPSIjZjBmMGYwIiByPSIyNTYiLz48ZyBmaWxsPSIjZDgwMDI3Ij48cGF0aCBkPSJtMjQ0Ljg3IDI1NmgyNjcuMTNjMC0yMy4xMDYtMy4wOC00NS40OS04LjgxOS02Ni43ODNoLTI1OC4zMTF6Ii8+PHBhdGggZD0ibTI0NC44NyAxMjIuNDM1aDIyOS41NTZjLTE1LjY3MS0yNS41NzItMzUuNzA4LTQ4LjE3NS01OS4wNy02Ni43ODNoLTE3MC40ODZ6Ii8+PHBhdGggZD0ibTI1NiA1MTJjNjAuMjQ5IDAgMTE1LjYyNi0yMC44MjQgMTU5LjM1Ni01NS42NTJoLTMxOC43MTJjNDMuNzMgMzQuODI4IDk5LjEwNyA1NS42NTIgMTU5LjM1NiA1NS42NTJ6Ii8+PHBhdGggZD0ibTM3LjU3NCAzODkuNTY1aDQzNi44NTJjMTIuNTgxLTIwLjUyOSAyMi4zMzgtNDIuOTY5IDI4Ljc1NS02Ni43ODNoLTQ5NC4zNjJjNi40MTcgMjMuODE0IDE2LjE3NCA0Ni4yNTQgMjguNzU1IDY2Ljc4M3oiLz48L2c+PHBhdGggZD0ibTExOC41ODQgMzkuOTc4aDIzLjMyOWwtMjEuNyAxNS43NjUgOC4yODkgMjUuNTA5LTIxLjY5OS0xNS43NjUtMjEuNjk5IDE1Ljc2NSA3LjE2LTIyLjAzN2MtMTkuMTA2IDE1LjkxNS0zNS44NTIgMzQuNTYxLTQ5LjY1MiA1NS4zMzdoNy40NzVsLTEzLjgxMyAxMC4wMzVjLTIuMTUyIDMuNTktNC4yMTYgNy4yMzctNi4xOTQgMTAuOTM4bDYuNTk2IDIwLjMwMS0xMi4zMDYtOC45NDFjLTMuMDU5IDYuNDgxLTUuODU3IDEzLjEwOC04LjM3MiAxOS44NzNsNy4yNjcgMjIuMzY4aDI2LjgyMmwtMjEuNyAxNS43NjUgOC4yODkgMjUuNTA5LTIxLjY5OS0xNS43NjUtMTIuOTk4IDkuNDQ0Yy0xLjMwMSAxMC40NTgtMS45NzkgMjEuMTEtMS45NzkgMzEuOTIxaDI1NmMwLTE0MS4zODQgMC0xNTguMDUyIDAtMjU2LTUwLjU3MiAwLTk3LjcxNSAxNC42Ny0xMzcuNDE2IDM5Ljk3OHptOS45MTggMTkwLjQyMi0yMS42OTktMTUuNzY1LTIxLjY5OSAxNS43NjUgOC4yODktMjUuNTA5LTIxLjctMTUuNzY1aDI2LjgyMmw4LjI4OC0yNS41MDkgOC4yODggMjUuNTA5aDI2LjgyMmwtMjEuNyAxNS43NjV6bS04LjI4OS0xMDAuMDgzIDguMjg5IDI1LjUwOS0yMS42OTktMTUuNzY1LTIxLjY5OSAxNS43NjUgOC4yODktMjUuNTA5LTIxLjctMTUuNzY1aDI2LjgyMmw4LjI4OC0yNS41MDkgOC4yODggMjUuNTA5aDI2LjgyMnptMTAwLjExNSAxMDAuMDgzLTIxLjY5OS0xNS43NjUtMjEuNjk5IDE1Ljc2NSA4LjI4OS0yNS41MDktMjEuNy0xNS43NjVoMjYuODIybDguMjg4LTI1LjUwOSA4LjI4OCAyNS41MDloMjYuODIybC0yMS43IDE1Ljc2NXptLTguMjg5LTEwMC4wODMgOC4yODkgMjUuNTA5LTIxLjY5OS0xNS43NjUtMjEuNjk5IDE1Ljc2NSA4LjI4OS0yNS41MDktMjEuNy0xNS43NjVoMjYuODIybDguMjg4LTI1LjUwOSA4LjI4OCAyNS41MDloMjYuODIyem0wLTc0LjU3NCA4LjI4OSAyNS41MDktMjEuNjk5LTE1Ljc2NS0yMS42OTkgMTUuNzY1IDguMjg5LTI1LjUwOS0yMS43LTE1Ljc2NWgyNi44MjJsOC4yODgtMjUuNTA5IDguMjg4IDI1LjUwOWgyNi44MjJ6IiBmaWxsPSIjMDA1MmI0Ii8+PGcvPjxnLz48Zy8+PGcvPjxnLz48Zy8+PGcvPjxnLz48Zy8+PGcvPjxnLz48Zy8+PGcvPjxnLz48Zy8+PC9zdmc+" />
+        </a>
+        </div>
             <div class="current-text">
                 <h1 class="display-3" vg-content='c.t("hello-uuid7")'>Hello, UUIDv7!</h1>
             </div>
@@ -236,7 +256,7 @@
 //     "encoding/json"
 //     "net/http"
 	uuid "github.com/uuid6/uuid6go-proto"
-    "log"
+    // "log"
 
 )
 
@@ -307,6 +327,16 @@ func (c *Root) display( value bool) string {
     return val
 }
 
+func (c *Root) setLang(event vugu.DOMEvent, lang string) {
+    ee := event.EventEnv()
+
+    go func() {
+        
+        ee.Lock()
+        c.lang = lang
+        defer ee.UnlockRender()
+    }()
+}
 
 func (c *Root) GetNewUUID(event vugu.DOMEvent) {
     ee := event.EventEnv()
@@ -324,8 +354,6 @@ func (c *Root) GetNewUUID(event vugu.DOMEvent) {
         c.bits = uid.ToBitArray();
         c.uuid = uid.ToString();
         defer ee.UnlockRender()
-        log.Print(event.PropString("target", "value"))        
-        log.Print(uid.ToMicrosoftString())        
     }()
 }
 
@@ -343,8 +371,6 @@ func indexer(input int) int {
 	}
 	return out
 }
-
-
 
 
 
