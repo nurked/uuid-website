@@ -17,17 +17,17 @@ func initTranslation() {
 	tdta["en-US"]["intro-uuid7"] = "Instead we are introducing UUIDv7. Take a look, we have a freshly generated UUIDv7 right here:"
 	tdta["en-US"]["get-new"] = "Get new UUID"
 	tdta["en-US"]["unix-timestamp"] = "Unix timestamp"
-	tdta["en-US"]["precision"] = "Sub-second presicion"
+	tdta["en-US"]["precision"] = "Sub-second precision"
 	tdta["en-US"]["counter"] = "Counter"
 	tdta["en-US"]["node"] = "Node"
 	tdta["en-US"]["random"] = "Random"
 	tdta["en-US"]["version"] = "Version"
 	tdta["en-US"]["variant"] = "Variant"
-	tdta["en-US"]["unix-timestamp-description"] = "no more flying DeLorians. You always in control and you know where and when this UUID happened. First 36 bits are dedicated for the Unix timestamp. No random bit ordering. No little-endian bits. It is just a number that can be parsed by any computer system."
-	tdta["en-US"]["precision-description"] = "Need to be more specific about your time? UUIDv7 allows you to store up to 48 bits of sub-second precision. Not just that. The data is encoded with a trickle of magic that allows it to be binary sortable. But we are a very good magicians. We explain all our tricks."
-	tdta["en-US"]["counter-description"] = "Is your flux capacitor overcharged and you are producing millions of UUIDs per milli-second? Use counter to keep them well ordered."
-	tdta["en-US"]["node-description"] = "You can store an information about a machine that produced this UUID in this block."
-	tdta["en-US"]["random-description"] = "Add some randomity at the end to ensure that your UUID is totally unique and no other UUIDs are just like it."
+	tdta["en-US"]["unix-timestamp-description"] = "no more flying DeLorians. You always in control, and you know where and when this UUID happened. First 36 bits are dedicated for the Unix timestamp. No random bit ordering. No little-endian bits. It is just a number that can be parsed by any computer system."
+	tdta["en-US"]["precision-description"] = "Need to be more specific about your time? UUIDv7 allows you to store up to 48 bits of sub-second precision. Not just that. The data is encoded with a trickle of magic that allows it to be binary sortable. But we are superb magicians. We explain all our tricks."
+	tdta["en-US"]["counter-description"] = "Is your flux capacitor overcharged, and you are producing millions of UUIDs per milli-second? Use counter to keep them well-ordered."
+	tdta["en-US"]["node-description"] = "You can store information about a machine that produced this UUID in this block."
+	tdta["en-US"]["random-description"] = "Add some chaos at the end to ensure that your UUID is totally unique, and no other UUIDs are just like it."
 	tdta["en-US"]["version-description"] = "There are times to be boring for a reason of a backward-compatibility. This field contains the version number to be compatible with UUIDv4."
 	tdta["en-US"]["variant-description"] = "Even more boring stuff for compatibility with UUIDv4."
 	tdta["en-US"]["encoding-intro"] = "Special mention to our amazing counter precision encoding algorithm."
@@ -46,7 +46,7 @@ func initTranslation() {
 	tdta["ru-RU"]["description-uuid7"] = `
 	Современная разработка зачастую требует создания уникальных идентификаторов, которые используются как ключи в базах данных.
 	Данная версия UUID хранит в себе дату о времени создания идентификатора в бинарно-сортируемом формате. 
-	Более того, идентификатор устойчив к коллизиям и подбору, что уменьшает риски связанные с безопасностью. Ни одна из существующих версий UUID (1-4) обладает всеми вышеописанными приемуществами.`
+	Более того, идентификатор устойчив к коллизиям и подбору, что уменьшает риски связанные с безопасностью. Ни одна из существующих версий UUID (1-4) обладает всеми вышеописанными преимуществами.`
 	tdta["ru-RU"]["intro-uuid7"] = "Представляем вам UUID версии 7. Взгляните сами, вот свежесгенерированный идентификатор:"
 	tdta["ru-RU"]["get-new"] = "Хочу ещё один"
 	tdta["ru-RU"]["unix-timestamp"] = "Unix timestamp"
