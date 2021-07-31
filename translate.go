@@ -27,7 +27,7 @@ func initTranslation() {
 	tdta["en-US"]["precision-description"] = "Need to be more specific about your time? UUIDv7 allows you to store up to 48 bits of sub-second precision. Not just that. The data is encoded with a trickle of magic that allows it to be binary sortable. But we are superb magicians. We explain all our tricks."
 	tdta["en-US"]["counter-description"] = "Is your flux capacitor overcharged, and you are producing millions of UUIDs per milli-second? Use counter to keep them well-ordered."
 	tdta["en-US"]["node-description"] = "You can store information about a machine that produced this UUID in this block."
-	tdta["en-US"]["random-description"] = "Add some chaos at the end to ensure that your UUID is totally unique, and no other UUIDs are just like it."
+	tdta["en-US"]["random-description"] = "Add some chaos at the end to ensure that your UUID is totally unique and no other UUIDs are just like it."
 	tdta["en-US"]["version-description"] = "There are times to be boring for a reason of a backward-compatibility. This field contains the version number to be compatible with UUIDv4."
 	tdta["en-US"]["variant-description"] = "Even more boring stuff for compatibility with UUIDv4."
 	tdta["en-US"]["encoding-intro"] = "Special mention to our amazing counter precision encoding algorithm."
@@ -46,7 +46,7 @@ func initTranslation() {
 	tdta["ru-RU"]["description-uuid7"] = `
 	Современная разработка зачастую требует создания уникальных идентификаторов, которые используются как ключи в базах данных.
 	Данная версия UUID хранит в себе дату о времени создания идентификатора в бинарно-сортируемом формате. 
-	Более того, идентификатор устойчив к коллизиям и подбору, что уменьшает риски связанные с безопасностью. Ни одна из существующих версий UUID (1-4) обладает всеми вышеописанными преимуществами.`
+	Более того, идентификатор устойчив к коллизиям и подбору, что уменьшает риски связанные с безопасностью. Ни одна из существующих версий UUID (1-4) обладает всеми вышеописанными приемуществами.`
 	tdta["ru-RU"]["intro-uuid7"] = "Представляем вам UUID версии 7. Взгляните сами, вот свежесгенерированный идентификатор:"
 	tdta["ru-RU"]["get-new"] = "Хочу ещё один"
 	tdta["ru-RU"]["unix-timestamp"] = "Unix timestamp"
