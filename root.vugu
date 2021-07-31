@@ -105,7 +105,7 @@
     <div class="content">
         <header>
             <div class="current-text">
-                <h1 class="display-3">Hello, UUIDv7!</h1>
+                <h1 class="display-3" vg-content='c.t("hello-uuid7")'>Hello, UUIDv7!</h1>
             </div>
         </header>
         <main>
@@ -113,7 +113,7 @@
                 <div class="row justify-content-center pt-2">
                     
                     <div class="col col-8">
-                    <p>
+                    <p vg-content='c.t("description-uuid7")'>
                     A common case for modern applications is to create a unique
                     identifier for use as a primary key in a database table.  This
                     identifier usually implements an embedded timestamp that is sortable
@@ -124,7 +124,7 @@
                     requirements in the most efficient possible way.
                     </p>
 
-                    <p>
+                    <p vg-content='c.t("intro-uuid7")'>
                     Instead we are introducing UUIDv7. Take a look, we have a freshly generated UUIDv7 right here:
                     </p>
                     
@@ -154,8 +154,8 @@
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
                                 <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
-                            </svg> 
-                            Get new UUID
+                            </svg>
+                            <span  vg-content='c.t("get-new")'></span>
                         </button>
                     </div>
                 </div>
@@ -165,18 +165,43 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col col-8 pt-4">
-                        <p><span class="timestamp explain bg">Unix timestamp</span> &ndash; no more flying DeLorians. You always in control and you know where and when this UUID happened. First 36 bits are dedicated for the Unix timestamp. No random bit ordering. No little-endian bits. It is just a number that can be parsed by any computer system. </p>
-                        <p><span class="precision explain bg">Sub-second precision bits</span> &ndash; Need to be more specific about your time? UUIDv7 allows you to store up to 48 bits of sub-second precision. Not just that. The data is encoded with a trickle of magic that allows it to be binary sortable. But we are a very good magicians. We explain all our tricks.</p>
-                        <p><span class="counter explain bg">Counter</span> &ndash; Is your flux capacitor overcharged and you are producing millions of UUIDs per milli-second? Use counter to keep them well ordered. </p>
-                        <p><span class="node explain bg">Node data</span> &ndash; You can store an information about a machine that produced this UUID in this block.</p>
-                        <p><span class="random explain bg">Random data</span> &ndash; Add some randomity at the end to ensure that your UUID is totally unique and no other UUIDs are just like it. </p>
-                        <p><span class="version explain bg">Version</span> &ndash; There are times to be boring for a reason of a backward-compatibility. This field contains the version number to be compatible with UUIDv4. </p>
-                        <p><span class="variant explain bg">Variant</span> &ndash; Even more boring stuff for compatibility with UUIDv4. </p>
+                        <p>
+                            <span class="timestamp explain bg"  vg-content='c.t("unix-timestamp")'>Unix timestamp</span> &ndash; 
+                            <span vg-content='c.t("unix-timestamp-description")'></span>
+                        </p>
+                        <p>
+                            <span class="precision explain bg"  vg-content='c.t("precision")'>Sub-second precision</span> &ndash; 
+                            <span vg-content='c.t("precision-description")'></span>
+                        </p>
+
+                        <p>
+                            <span class="counter explain bg"  vg-content='c.t("counter")'>Counter</span> &ndash; 
+                            <span vg-content='c.t("counter")'></span>
+                        </p>
+
+                        <p>
+                            <span class="node explain bg"  vg-content='c.t("node")'>Node</span> &ndash; 
+                            <span vg-content='c.t("node-description")'></span>
+                        </p>
+
+                        <p>
+                            <span class="random explain bg"  vg-content='c.t("random")'>random</span> &ndash; 
+                            <span vg-content='c.t("random-description")'></span>
+                        </p>
+
+                        <p>
+                            <span class="version explain bg"  vg-content='c.t("version")'>version</span> &ndash; 
+                            <span vg-content='c.t("version-description")'></span>
+                        </p>
+                        <p>
+                            <span class="variant explain bg"  vg-content='c.t("variant")'>variant</span> &ndash; 
+                            <span vg-content='c.t("variant-description")'></span>
+                        </p>
                     </div>
                 </div>
                 <div class="row justify-content-center">
                     <div class="col col-8">
-                        <p>
+                        <p vg-content='c.t("encoding-intro")'>
                             Special mention to our amazing counter precision encoding algorithm.
                         </p>
                     </div>
@@ -190,12 +215,15 @@
             <div class="container">
                 <div class="row pt-5 justify-content-center">
                     <div class="col col-8">
-                        <p><a href="https://datatracker.ietf.org/doc/draft-peabody-dispatch-new-uuid-format/">IETF: New UUID formats</a></p>
-                        <p><a href="https://github.com/uuid6/uuid6-ietf-draft">Github: uuid6-ietf-draft</a></p>
-                        <p><a href="https://github.com/uuid6/uuid6go-proto">golang generator uuid6go-proto</a></p>
-                        <p><a href="https://vugu.org">site written in vugu</a></p>
-                        <p>Contact: <a href="mailto:brad@peabody.io">Brad G. Peabody</a> and <a href="mailto:kydavis@cisco.com">Kyzer R. Davis</a></p>
-                        <p class="text-end">Copyright &copy; 2021</p>
+                        <p><a href="https://datatracker.ietf.org/doc/draft-peabody-dispatch-new-uuid-format/" vg-content='c.t("footer-ietf")'>IETF: New UUID formats</a></p>
+                        <p><a href="https://github.com/uuid6/uuid6-ietf-draft" vg-content='c.t("footer-github-draft")'>Github: uuid6-ietf-draft</a></p>
+                        <p><a href="https://github.com/uuid6/uuid6go-proto" vg-content='c.t("footer-golang-gen")'>golang generator uuid6go-proto</a></p>
+                        <p><a href="https://vugu.org" vg-content='c.t("footer-vugu")'>site written in vugu</a></p>
+                        <p><span vg-content='c.t("footer-contact")'></span> <a href="mailto:brad@peabody.io" vg-content='c.t("footer-peabody")'>Brad G. Peabody</a> <span vg-content='c.t("footer-and")'></span> <a href="mailto:kydavis@cisco.com" vg-content='c.t("footer-davis")'>Kyzer R. Davis</a></p>
+                        <p class="text-end" vg-content='c.t("footer-copyright")'>Copyright &copy; 2021</p>
+                        <p class="text-end">
+                            Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+                        </p>
                     </div>
                 </div>
             </div>    
@@ -221,15 +249,18 @@ type Root struct {
     subsecondPrecisionLength int `vugu:"data"`
     bits []bool `vugu:"data"`
     uuid string `vugu:"data"`
+    lang string `vugu:"data"`
 }
 
 
 func (c *Root) Init(ctx vugu.InitCtx) {
+        initTranslation()
         var gen uuid.UUIDv7Generator
         c.counterPrecisionBits = 8
         c.nodePrecisionBits = 4
         c.node = 7
         c.subsecondPrecisionLength = 16
+        c.lang = "en-US"
 		gen.CounterPrecisionBits = c.counterPrecisionBits
 		gen.NodePrecisionBits = c.nodePrecisionBits
 		gen.Node = c.node
@@ -239,6 +270,10 @@ func (c *Root) Init(ctx vugu.InitCtx) {
         
         c.bits = uid.ToBitArray();
         c.uuid = uid.ToString();
+}
+
+func (c *Root) t(str string) string {
+    return translate(c.lang, str)
 }
 
 
@@ -308,6 +343,9 @@ func indexer(input int) int {
 	}
 	return out
 }
+
+
+
 
 
 
