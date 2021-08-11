@@ -40,6 +40,16 @@ func initTranslation() {
 	tdta["en-US"]["footer-davis"] = "Kyzer R. Davis"
 	tdta["en-US"]["footer-and"] = "and"
 	tdta["en-US"]["footer-copyright"] = "Copyright"
+	tdta["en-US"]["tune-precision"] = "Precision length"
+	tdta["en-US"]["tune-counter"] = "Counter length"
+	tdta["en-US"]["tune-node-length"] = "Node length"
+	tdta["en-US"]["tune-node-value"] = "Node value"
+	tdta["en-US"]["tune"] = "Dial in some settings and press the button below"
+	tdta["en-US"]["log-generation-started"] = "Value generation initiated on"
+	tdta["en-US"]["log-time"] = "Resulting time stored in UUID"
+	tdta["en-US"]["log-precision"] = "Resulting precision from this UUID"
+	tdta["en-US"]["log-counter"] = "Counter received from UUID"
+	tdta["en-US"]["log-node"] = "Node value after parsing"
 
 	tdta["ru-RU"] = make(map[string]string)
 	tdta["ru-RU"]["hello-uuid7"] = "Встречайте, UUID 7! 🎉"
@@ -73,6 +83,18 @@ func initTranslation() {
 	tdta["ru-RU"]["footer-davis"] = "Kyzer R. Davis"
 	tdta["ru-RU"]["footer-and"] = "и"
 	tdta["ru-RU"]["footer-copyright"] = "Все права защищены"
+
+	tdta["ru-RU"]["tune-precision"] = "Биты субсекундной точности"
+	tdta["ru-RU"]["tune-counter"] = "Биты счётчика"
+	tdta["ru-RU"]["tune-node-length"] = "Биты узла"
+	tdta["ru-RU"]["tune-node-value"] = "Значение узла"
+	tdta["ru-RU"]["tune"] = "Подкрути ручки управления и жми на эту кнопку!"
+
+	tdta["ru-RU"]["log-generation-started"] = "Создание этого UUID началось в"
+	tdta["ru-RU"]["log-time"] = "Время, полученное из UUID после парсинга"
+	tdta["ru-RU"]["log-precision"] = "Суб-секундная точность"
+	tdta["ru-RU"]["log-counter"] = "Счётчик"
+	tdta["ru-RU"]["log-node"] = "Узел"
 
 }
 

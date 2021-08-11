@@ -170,7 +170,88 @@
                             </div>
                         </div>
                 </div>
+               
+                
+                <div class="row justify-content-start">
+                    <div class="col col-3 p-2 bg timestamp">
+                    </div>
+                    <div class="col col-3 p-2 bg timestamp">
+                        <span vg-content='c.t("log-generation-started")'></span>
+                    </div>
+                    <div class="col col-3 p-2 bg timestamp">
+                        <span vg-content='c.oTime'></span>
+                    </div>
+                </div>
+                <div class="row justify-content-start">
+                    <div class="col col-3 p-2 bg timestamp">
+                    </div>
+                    <div class="col col-3 p-2 bg timestamp">
+                        <span vg-content='c.t("log-time")'></span>
+                    </div>
+                    <div class="col col-3 p-2 bg timestamp">
+                        <span vg-content='c.rTime'></span> (<span vg-content='c.rTimestamp'></span>)
+                    </div>
+                </div>
+                <div class="row justify-content-start">
+                    <div class="col col-3 p-2 bg precision">
+                    </div>
+                    <div class="col col-3 p-2 bg precision">
+                        <span vg-content='c.t("log-precision")'></span>
+                    </div>
+                    <div class="col col-3 p-2 bg precision">
+                        <span vg-content='c.rMilli'></span>
+                    </div>
+                </div>
+                <div class="row justify-content-start">
+                    <div class="col col-3 p-2 bg counter">
+                    </div>
+                    <div class="col col-3 p-2 bg counter">
+                        <span vg-content='c.t("log-counter")'></span>
+                    </div>
+                    <div class="col col-3 p-2 bg counter">
+                        <span vg-content='c.rCounter'></span>
+                    </div>
+                </div>
+                <div class="row justify-content-start">
+                    <div class="col col-3 p-2 bg node">
+                    </div>
+                    <div class="col col-3 p-2 bg node">
+                        <span vg-content='c.t("log-node")'></span>
+                    </div>
+                    <div class="col col-3 p-2 bg node">
+                        <span vg-content='c.rNode'></span>
+                    </div>
+                </div>
+                 <div class="row justify-content-end uuid-text">
+                    <div class="col col-2 d-flex justify-content-center p-2">
+                        <span vg-content='c.t("tune-precision")'></span>
+                    </div>
+                    <div class="col col-2 d-flex justify-content-center p-2">
+                        <span vg-content='c.t("tune-counter")'></span>
+                    </div>
+                    <div class="col col-2 d-flex justify-content-center p-2">
+                        <span vg-content='c.t("tune-node-length")'></span>
+                    </div>
+                    <div class="col col-2 d-flex justify-content-center p-2">
+                        <span vg-content='c.t("tune-node-value")'></span>
+                    </div>
+                    <div class="col col-3 d-flex justify-content-center p-2">
+                        <span vg-content='c.t("tune")'></span>
+                    </div>
+                </div>
                 <div class="row justify-content-end">
+                    <div class="col col-2 d-flex justify-content-center p-2">
+                        <input type="number" class="form-control" min="1" max="64" :value='c.subsecondPrecisionLength' @change='c.subsecondPrecisionLength, _= strconv.Atoi(event.PropString("target", "value"))'>
+                    </div>
+                    <div class="col col-2 d-flex justify-content-center p-2">
+                        <input type="number" class="form-control" min="1" max="64" :value='c.counterPrecisionLength' @change='c.counterPrecisionLength, _= strconv.Atoi(event.PropString("target", "value"))'>
+                    </div>
+                    <div class="col col-2 d-flex justify-content-center p-2">
+                        <input type="number" class="form-control" min="1" max="16" :value='c.nodePrecisionLength'  @change='c.nodePrecisionLength, _= strconv.Atoi(event.PropString("target", "value"))'>
+                    </div>
+                    <div class="col col-2 d-flex justify-content-center p-2">
+                        <input type="number" class="form-control" min="1" max="65355" :value='c.node' @change='c.node, _= strconv.ParseUint(event.PropString("target", "value"), 10,64)'>
+                    </div>
                     <div class="col col-3 d-flex justify-content-center p-2">
                         <button class="btn btn-primary" @click="c.GetNewUUID(event)">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
@@ -181,7 +262,6 @@
                         </button>
                     </div>
                 </div>
-
 
             </div>
             <div class="container">
@@ -255,19 +335,23 @@
 
 <script type="application/x-go">
  import (
-//     "encoding/json"
-//     "net/http"
 	uuid "github.com/uuid6/uuid6go-proto"
-    // "log"
-
+    "time"
+    "strconv"
 )
 
 
 type Root struct {
     selected string `vugu:"data"`
-    counterPrecisionBits int `vugu:"data"`
-    nodePrecisionBits int `vugu:"data"`
+    counterPrecisionLength int `vugu:"data"`
+    nodePrecisionLength int `vugu:"data"`
     node uint64 `vugu:"data"`
+    rTime time.Time `vugu:"data"`
+    oTime time.Time `vugu:"data"`
+    rNode uint64 `vugu:"data"`
+    rCounter uint64 `vugu:"data"`
+    rMilli float64 `vugu:"data"`
+    rTimestamp uint64 `vugu:"data"`
     subsecondPrecisionLength int `vugu:"data"`
     bits []bool `vugu:"data"`
     uuid string `vugu:"data"`
@@ -278,18 +362,24 @@ type Root struct {
 func (c *Root) Init(ctx vugu.InitCtx) {
         initTranslation()
         var gen uuid.UUIDv7Generator
-        c.counterPrecisionBits = 8
-        c.nodePrecisionBits = 4
+        c.counterPrecisionLength = 8
+        c.nodePrecisionLength = 4
         c.node = 7
         c.subsecondPrecisionLength = 16
         c.lang = "en-US"
-		gen.CounterPrecisionBits = c.counterPrecisionBits
-		gen.NodePrecisionBits = c.nodePrecisionBits
+		gen.CounterPrecisionLength = c.counterPrecisionLength
+		gen.NodePrecisionLength = c.nodePrecisionLength
 		gen.Node = c.node
 		gen.SubsecondPrecisionLength = c.subsecondPrecisionLength
 
+        c.oTime = time.Now()
         var uid = gen.Next()
         
+        c.rTime = uid.Time()
+        c.rTimestamp = uid.Timestamp()
+        c.rMilli , c.rCounter, c.rNode = gen.Parse(&uid)
+
+
         c.bits = uid.ToBitArray();
         c.uuid = uid.ToString();
 }
@@ -309,9 +399,9 @@ func (c *Root) getClass(key int) string {
         class = "variant"
     } else if c.subsecondPrecisionLength !=0 && key < indexer(c.subsecondPrecisionLength+1) {
         class = "precision"
-    } else if c.counterPrecisionBits !=0 && key < indexer(c.subsecondPrecisionLength+c.counterPrecisionBits+1) {
+    } else if c.counterPrecisionLength !=0 && key < indexer(c.subsecondPrecisionLength+c.counterPrecisionLength+1) {
         class = "counter"
-    } else if c.nodePrecisionBits !=0 && key < indexer(c.subsecondPrecisionLength+c.counterPrecisionBits+c.nodePrecisionBits+1) {
+    } else if c.nodePrecisionLength !=0 && key < indexer(c.subsecondPrecisionLength+c.counterPrecisionLength+c.nodePrecisionLength+1) {
         class = "node"
     } else {
         class = "random"
@@ -345,13 +435,18 @@ func (c *Root) GetNewUUID(event vugu.DOMEvent) {
 
     go func() {
         var gen uuid.UUIDv7Generator
-		gen.CounterPrecisionBits = c.counterPrecisionBits
-		gen.NodePrecisionBits = c.nodePrecisionBits
+		gen.CounterPrecisionLength = c.counterPrecisionLength
+		gen.NodePrecisionLength = c.nodePrecisionLength
 		gen.Node = c.node
 		gen.SubsecondPrecisionLength = c.subsecondPrecisionLength
+        c.oTime = time.Now()
 
         var uid = gen.Next()
         
+        c.rTime = uid.Time()
+        c.rTimestamp = uid.Timestamp()
+        c.rMilli , c.rCounter, c.rNode = gen.Parse(&uid)
+
         ee.Lock()
         c.bits = uid.ToBitArray();
         c.uuid = uid.ToString();
