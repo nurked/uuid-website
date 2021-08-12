@@ -1,167 +1,206 @@
-<head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-</head>
+<html>
+    <head>
+        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    </head>
 
 
 
-<body>
-    <style>
-        body {
-            padding: 0px;
-            margin: 0px;
-        }
+    <body>
+        <style>
+            body {
+                padding: 0px;
+                margin: 0px;
+            }
 
-        header {
-            color: white;
-            font-family: 'Comfortaa', cursive;
-            background-color: rgb(17, 17, 108);
-            /* background: linear-gradient(0deg, rgba(255,255,255,1) 48%, rgb(17, 17, 108) 50%); */
-            /* background-image: linear-gradient(0deg,white, rgb(17, 17, 108)); */
-            min-height: 15vh;
-        }
+            header {
+                font-family: 'Comfortaa', cursive;
+                
+                /* background: linear-gradient(0deg, rgba(255,255,255,1) 48%, rgb(17, 17, 108) 50%); */
+                /* background-image: linear-gradient(0deg,white, rgb(17, 17, 108)); */
+                min-height: 15vh;
+            }
 
-        footer {
-            background-color: #e6e6e6;
-            font-size:0.75em;
-        }
+            .dark-bg {
+                background-color: rgb(17, 17, 108);
+            }
 
-        .bitcode {
-            font-weight: bold;
-            font-size: 1.5rem;
-            display: grid; 
-            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 2fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 2fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 2fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr; 
-            grid-template-rows: 1fr 1fr 1fr 1fr; 
-            gap: 0px 0px; 
-            
-        }
+            footer {
+                background-color: #e6e6e6;
+                font-size:0.75em;
+            }
 
-        .bg {
-            background-color: #002b36;
-            
-        }
+            .bitcode {
+                font-weight: bold;
+                display: grid; 
+                grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 2fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 2fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 2fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr; 
+                grid-template-rows: 1fr 1fr 1fr 1fr; 
+                gap: 0px 0px; 
+                
+            }
 
-        .explain {
-            padding: 1px 8px 2px 8px;
-            border-radius: 6px;
-        }
+            .bg {
+                background-color: #002b36;
+            }
 
-        .box {
-            max-width: 600px;
-        }
+            .explain {
+                padding: 1px 8px 2px 8px;
+                border-radius: 6px;
+            }
 
-        .current-text {
-            height: 15vh;
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-        }
+            .box {
+                max-width: 600px;
+            }
 
-        .uuid-text {
-            color: #fdf6e3;
-        }
+            .current-text {
+                height: 25vh;
+                display: flex;
+                justify-content: center;
+                align-items: flex-end;
+                width:100%;
+            }
 
-        .timestamp {
-            color:#859900;
-        }
+            .light {
+                color: #fdf6e3;
+            }
 
-        .version {
-            color:#dc322f;
-        }
-        .variant {
-            color:#d33682;
-        }
+            .timestamp {
+                color:#859900;
+            }
 
-        .random {
-            color: #fdf6e3;
-        }
+            .version {
+                color:#dc322f;
+            }
+            .variant {
+                color:#d33682;
+            }
 
-        .precision {
-            color: #b58900;
-        }
+            .random {
+                color: #fdf6e3;
+            }
 
-        .node {
-            color: #268bd2;
-        }
+            .precision {
+                color: #b58900;
+            }
 
-        .bits {
-            cursor: pointer;
-            font-weight: bold;
-        }
+            .node {
+                color: #268bd2;
+            }
 
-        .counter {
-            color: #2aa198;
-        }
+            .bits {
+                cursor: pointer;
+                font-weight: bold;
+            }
 
-        .hex {
-            cursor: pointer;
-        }
+            .counter {
+                color: #2aa198;
+            }
 
-        .langs {
-            float: right;
-            padding:5px;
-        }
-        .lang {
-            text-decoration:none;
-            cursor:pointer;
-        }
-        .lang>img {
-            width: 1.5em;
-            height: 1.5em;
-        }
+            .hex {
+                cursor: pointer;
+            }
 
-    </style>
-    <div class="content">
-        <header>
-        <div class="langs">
-        <a class="lang" @click='c.setLang(event, "ru-RU")'>
-            <img src="data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTEyIDUxMiIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMjU2IiBjeT0iMjU2IiBmaWxsPSIjZjBmMGYwIiByPSIyNTYiLz48cGF0aCBkPSJtNDk2LjA3NyAzNDUuMDQzYzEwLjI5MS0yNy43MzMgMTUuOTIzLTU3LjcyOSAxNS45MjMtODkuMDQzcy01LjYzMi02MS4zMS0xNS45MjMtODkuMDQzaC00ODAuMTU0Yy0xMC4yOSAyNy43MzMtMTUuOTIzIDU3LjcyOS0xNS45MjMgODkuMDQzczUuNjMzIDYxLjMxIDE1LjkyMyA4OS4wNDNsMjQwLjA3NyAyMi4yNjF6IiBmaWxsPSIjMDA1MmI0Ii8+PHBhdGggZD0ibTI1NiA1MTJjMTEwLjA3MSAwIDIwMy45MDYtNjkuNDcyIDI0MC4wNzctMTY2Ljk1N2gtNDgwLjE1NGMzNi4xNzEgOTcuNDg1IDEzMC4wMDYgMTY2Ljk1NyAyNDAuMDc3IDE2Ni45NTd6IiBmaWxsPSIjZDgwMDI3Ii8+PGcvPjxnLz48Zy8+PGcvPjxnLz48Zy8+PGcvPjxnLz48Zy8+PGcvPjxnLz48Zy8+PGcvPjxnLz48Zy8+PC9zdmc+" />
-        </a>
-        <a class="lang" @click='c.setLang(event, "en-US")'>
-            <img src="data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTEyIDUxMiIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMjU2IiBjeT0iMjU2IiBmaWxsPSIjZjBmMGYwIiByPSIyNTYiLz48ZyBmaWxsPSIjZDgwMDI3Ij48cGF0aCBkPSJtMjQ0Ljg3IDI1NmgyNjcuMTNjMC0yMy4xMDYtMy4wOC00NS40OS04LjgxOS02Ni43ODNoLTI1OC4zMTF6Ii8+PHBhdGggZD0ibTI0NC44NyAxMjIuNDM1aDIyOS41NTZjLTE1LjY3MS0yNS41NzItMzUuNzA4LTQ4LjE3NS01OS4wNy02Ni43ODNoLTE3MC40ODZ6Ii8+PHBhdGggZD0ibTI1NiA1MTJjNjAuMjQ5IDAgMTE1LjYyNi0yMC44MjQgMTU5LjM1Ni01NS42NTJoLTMxOC43MTJjNDMuNzMgMzQuODI4IDk5LjEwNyA1NS42NTIgMTU5LjM1NiA1NS42NTJ6Ii8+PHBhdGggZD0ibTM3LjU3NCAzODkuNTY1aDQzNi44NTJjMTIuNTgxLTIwLjUyOSAyMi4zMzgtNDIuOTY5IDI4Ljc1NS02Ni43ODNoLTQ5NC4zNjJjNi40MTcgMjMuODE0IDE2LjE3NCA0Ni4yNTQgMjguNzU1IDY2Ljc4M3oiLz48L2c+PHBhdGggZD0ibTExOC41ODQgMzkuOTc4aDIzLjMyOWwtMjEuNyAxNS43NjUgOC4yODkgMjUuNTA5LTIxLjY5OS0xNS43NjUtMjEuNjk5IDE1Ljc2NSA3LjE2LTIyLjAzN2MtMTkuMTA2IDE1LjkxNS0zNS44NTIgMzQuNTYxLTQ5LjY1MiA1NS4zMzdoNy40NzVsLTEzLjgxMyAxMC4wMzVjLTIuMTUyIDMuNTktNC4yMTYgNy4yMzctNi4xOTQgMTAuOTM4bDYuNTk2IDIwLjMwMS0xMi4zMDYtOC45NDFjLTMuMDU5IDYuNDgxLTUuODU3IDEzLjEwOC04LjM3MiAxOS44NzNsNy4yNjcgMjIuMzY4aDI2LjgyMmwtMjEuNyAxNS43NjUgOC4yODkgMjUuNTA5LTIxLjY5OS0xNS43NjUtMTIuOTk4IDkuNDQ0Yy0xLjMwMSAxMC40NTgtMS45NzkgMjEuMTEtMS45NzkgMzEuOTIxaDI1NmMwLTE0MS4zODQgMC0xNTguMDUyIDAtMjU2LTUwLjU3MiAwLTk3LjcxNSAxNC42Ny0xMzcuNDE2IDM5Ljk3OHptOS45MTggMTkwLjQyMi0yMS42OTktMTUuNzY1LTIxLjY5OSAxNS43NjUgOC4yODktMjUuNTA5LTIxLjctMTUuNzY1aDI2LjgyMmw4LjI4OC0yNS41MDkgOC4yODggMjUuNTA5aDI2LjgyMmwtMjEuNyAxNS43NjV6bS04LjI4OS0xMDAuMDgzIDguMjg5IDI1LjUwOS0yMS42OTktMTUuNzY1LTIxLjY5OSAxNS43NjUgOC4yODktMjUuNTA5LTIxLjctMTUuNzY1aDI2LjgyMmw4LjI4OC0yNS41MDkgOC4yODggMjUuNTA5aDI2LjgyMnptMTAwLjExNSAxMDAuMDgzLTIxLjY5OS0xNS43NjUtMjEuNjk5IDE1Ljc2NSA4LjI4OS0yNS41MDktMjEuNy0xNS43NjVoMjYuODIybDguMjg4LTI1LjUwOSA4LjI4OCAyNS41MDloMjYuODIybC0yMS43IDE1Ljc2NXptLTguMjg5LTEwMC4wODMgOC4yODkgMjUuNTA5LTIxLjY5OS0xNS43NjUtMjEuNjk5IDE1Ljc2NSA4LjI4OS0yNS41MDktMjEuNy0xNS43NjVoMjYuODIybDguMjg4LTI1LjUwOSA4LjI4OCAyNS41MDloMjYuODIyem0wLTc0LjU3NCA4LjI4OSAyNS41MDktMjEuNjk5LTE1Ljc2NS0yMS42OTkgMTUuNzY1IDguMjg5LTI1LjUwOS0yMS43LTE1Ljc2NWgyNi44MjJsOC4yODgtMjUuNTA5IDguMjg4IDI1LjUwOWgyNi44MjJ6IiBmaWxsPSIjMDA1MmI0Ii8+PGcvPjxnLz48Zy8+PGcvPjxnLz48Zy8+PGcvPjxnLz48Zy8+PGcvPjxnLz48Zy8+PGcvPjxnLz48Zy8+PC9zdmc+" />
-        </a>
-        </div>
-            <div class="current-text">
-                <h1 class="display-3" vg-content='c.t("hello-uuid7")'>Hello, UUIDv7!</h1>
+            .langs {
+                float: right;
+                padding:5px;
+            }
+            .lang {
+                text-decoration:none;
+                cursor:pointer;
+            }
+            .lang>img {
+                width: 1.5em;
+                height: 1.5em;
+            }
+
+        </style>
+        <div class="content">
+            <header class="dark-bg light">
+            <div class="langs">
+            <a class="lang" @click='c.setLang(event, "ru-RU")'>
+                <img src="data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTEyIDUxMiIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMjU2IiBjeT0iMjU2IiBmaWxsPSIjZjBmMGYwIiByPSIyNTYiLz48cGF0aCBkPSJtNDk2LjA3NyAzNDUuMDQzYzEwLjI5MS0yNy43MzMgMTUuOTIzLTU3LjcyOSAxNS45MjMtODkuMDQzcy01LjYzMi02MS4zMS0xNS45MjMtODkuMDQzaC00ODAuMTU0Yy0xMC4yOSAyNy43MzMtMTUuOTIzIDU3LjcyOS0xNS45MjMgODkuMDQzczUuNjMzIDYxLjMxIDE1LjkyMyA4OS4wNDNsMjQwLjA3NyAyMi4yNjF6IiBmaWxsPSIjMDA1MmI0Ii8+PHBhdGggZD0ibTI1NiA1MTJjMTEwLjA3MSAwIDIwMy45MDYtNjkuNDcyIDI0MC4wNzctMTY2Ljk1N2gtNDgwLjE1NGMzNi4xNzEgOTcuNDg1IDEzMC4wMDYgMTY2Ljk1NyAyNDAuMDc3IDE2Ni45NTd6IiBmaWxsPSIjZDgwMDI3Ii8+PGcvPjxnLz48Zy8+PGcvPjxnLz48Zy8+PGcvPjxnLz48Zy8+PGcvPjxnLz48Zy8+PGcvPjxnLz48Zy8+PC9zdmc+" />
+            </a>
+            <a class="lang" @click='c.setLang(event, "en-US")'>
+                <img src="data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTEyIDUxMiIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMjU2IiBjeT0iMjU2IiBmaWxsPSIjZjBmMGYwIiByPSIyNTYiLz48ZyBmaWxsPSIjZDgwMDI3Ij48cGF0aCBkPSJtMjQ0Ljg3IDI1NmgyNjcuMTNjMC0yMy4xMDYtMy4wOC00NS40OS04LjgxOS02Ni43ODNoLTI1OC4zMTF6Ii8+PHBhdGggZD0ibTI0NC44NyAxMjIuNDM1aDIyOS41NTZjLTE1LjY3MS0yNS41NzItMzUuNzA4LTQ4LjE3NS01OS4wNy02Ni43ODNoLTE3MC40ODZ6Ii8+PHBhdGggZD0ibTI1NiA1MTJjNjAuMjQ5IDAgMTE1LjYyNi0yMC44MjQgMTU5LjM1Ni01NS42NTJoLTMxOC43MTJjNDMuNzMgMzQuODI4IDk5LjEwNyA1NS42NTIgMTU5LjM1NiA1NS42NTJ6Ii8+PHBhdGggZD0ibTM3LjU3NCAzODkuNTY1aDQzNi44NTJjMTIuNTgxLTIwLjUyOSAyMi4zMzgtNDIuOTY5IDI4Ljc1NS02Ni43ODNoLTQ5NC4zNjJjNi40MTcgMjMuODE0IDE2LjE3NCA0Ni4yNTQgMjguNzU1IDY2Ljc4M3oiLz48L2c+PHBhdGggZD0ibTExOC41ODQgMzkuOTc4aDIzLjMyOWwtMjEuNyAxNS43NjUgOC4yODkgMjUuNTA5LTIxLjY5OS0xNS43NjUtMjEuNjk5IDE1Ljc2NSA3LjE2LTIyLjAzN2MtMTkuMTA2IDE1LjkxNS0zNS44NTIgMzQuNTYxLTQ5LjY1MiA1NS4zMzdoNy40NzVsLTEzLjgxMyAxMC4wMzVjLTIuMTUyIDMuNTktNC4yMTYgNy4yMzctNi4xOTQgMTAuOTM4bDYuNTk2IDIwLjMwMS0xMi4zMDYtOC45NDFjLTMuMDU5IDYuNDgxLTUuODU3IDEzLjEwOC04LjM3MiAxOS44NzNsNy4yNjcgMjIuMzY4aDI2LjgyMmwtMjEuNyAxNS43NjUgOC4yODkgMjUuNTA5LTIxLjY5OS0xNS43NjUtMTIuOTk4IDkuNDQ0Yy0xLjMwMSAxMC40NTgtMS45NzkgMjEuMTEtMS45NzkgMzEuOTIxaDI1NmMwLTE0MS4zODQgMC0xNTguMDUyIDAtMjU2LTUwLjU3MiAwLTk3LjcxNSAxNC42Ny0xMzcuNDE2IDM5Ljk3OHptOS45MTggMTkwLjQyMi0yMS42OTktMTUuNzY1LTIxLjY5OSAxNS43NjUgOC4yODktMjUuNTA5LTIxLjctMTUuNzY1aDI2LjgyMmw4LjI4OC0yNS41MDkgOC4yODggMjUuNTA5aDI2LjgyMmwtMjEuNyAxNS43NjV6bS04LjI4OS0xMDAuMDgzIDguMjg5IDI1LjUwOS0yMS42OTktMTUuNzY1LTIxLjY5OSAxNS43NjUgOC4yODktMjUuNTA5LTIxLjctMTUuNzY1aDI2LjgyMmw4LjI4OC0yNS41MDkgOC4yODggMjUuNTA5aDI2LjgyMnptMTAwLjExNSAxMDAuMDgzLTIxLjY5OS0xNS43NjUtMjEuNjk5IDE1Ljc2NSA4LjI4OS0yNS41MDktMjEuNy0xNS43NjVoMjYuODIybDguMjg4LTI1LjUwOSA4LjI4OCAyNS41MDloMjYuODIybC0yMS43IDE1Ljc2NXptLTguMjg5LTEwMC4wODMgOC4yODkgMjUuNTA5LTIxLjY5OS0xNS43NjUtMjEuNjk5IDE1Ljc2NSA4LjI4OS0yNS41MDktMjEuNy0xNS43NjVoMjYuODIybDguMjg4LTI1LjUwOSA4LjI4OCAyNS41MDloMjYuODIyem0wLTc0LjU3NCA4LjI4OSAyNS41MDktMjEuNjk5LTE1Ljc2NS0yMS42OTkgMTUuNzY1IDguMjg5LTI1LjUwOS0yMS43LTE1Ljc2NWgyNi44MjJsOC4yODgtMjUuNTA5IDguMjg4IDI1LjUwOWgyNi44MjJ6IiBmaWxsPSIjMDA1MmI0Ii8+PGcvPjxnLz48Zy8+PGcvPjxnLz48Zy8+PGcvPjxnLz48Zy8+PGcvPjxnLz48Zy8+PGcvPjxnLz48Zy8+PC9zdmc+" />
+            </a>
             </div>
-        </header>
-        <main>
-            <div class="container">
-                <div class="row justify-content-center pt-4 pb-4">
-                    
-                    <div class="col col-8">
-                    <p vg-content='c.t("description-uuid7")'>
-                    A common case for modern applications is to create a unique
-                    identifier for use as a primary key in a database table.  This
-                    identifier usually implements an embedded timestamp that is sortable
-                    using the monotonic creation time in the most significant bits.  In
-                    addition the identifier is highly collision resistant, difficult to
-                    guess, and provides minimal security attack surfaces.  None of the
-                    existing UUID versions, including UUIDv1, fulfill each of these
-                    requirements in the most efficient possible way.
-                    </p>
+                <div class="current-text">
+                    <h1 class="display-3" vg-content='c.t("hello-uuid7")'>Hello, UUIDv7!</h1>
+                </div>
+            </header>
+            <main>
+                <div class="container-fluid">
+                    <div class="row justify-content-center pt-4 pb-4 dark-bg light">
+                        
+                        <div class="col col-md-8">
+                        <p vg-content='c.t("description-uuid7")'>
+                        A common case for modern applications is to create a unique
+                        identifier for use as a primary key in a database table.  This
+                        identifier usually implements an embedded timestamp that is sortable
+                        using the monotonic creation time in the most significant bits.  In
+                        addition the identifier is highly collision resistant, difficult to
+                        guess, and provides minimal security attack surfaces.  None of the
+                        existing UUID versions, including UUIDv1, fulfill each of these
+                        requirements in the most efficient possible way.
+                        </p>
 
-                    <p vg-content='c.t("intro-uuid7")'>
-                    Instead we are introducing UUIDv7. Take a look, we have a freshly generated UUIDv7 right here:
-                    </p>
-                    
+                        <p vg-content='c.t("intro-uuid7")'>
+                        Instead we are introducing UUIDv7. Take a look, we have a freshly generated UUIDv7 right here:
+                        </p>
+                        
+                        </div>
+                    </div>
+                    <div class="row fs-4">
+                        
                     </div>
                 </div>
-                <div class="row fs-4">
-                    
-                </div>
-            </div>
-            <div class="container-fluid bg">
-            
-                <div vg-if="len(c.bits) > 0" class="row justify-content-center font-monospace">
-                    <div class="col text-center p-4">
-                            <span vg-content="c.uuid" class="uuid-text display-4"></span>
+                <div class="container-fluid bg">
+                
+                    <div vg-if="len(c.bits) > 0" class="row justify-content-center font-monospace">
+                        <div class="col text-center p-4">
+                                <span vg-content="c.uuid" class="light display-4"></span>
+                        </div>
                     </div>
-                </div>
-                <div class="row justify-content-center">
+
+
+                    <div class="row justify-content-center">
+                        <div class="col-lg-3 d-flex justify-content-center p-2">
+                            <button class="btn btn-primary" @click="c.GetNewUUID(event)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
+                                    <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+                                </svg>
+                                <span  vg-content='c.t("get-new")'></span>
+                            </button>
+                        </div>
+
+                        <div class="col-lg-3 d-flex justify-content-center p-2">
+                            <button class="btn btn-primary" @click="c.displaySettings = !c.displaySettings">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear" viewBox="0 0 16 16">
+                                    <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/>
+                                    <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"/>
+                                </svg>
+                                <span  vg-content='c.t("show-settings")'></span>
+                            </button>
+                        </div>
+
+                        <div class="col-lg-3 d-flex justify-content-center p-2">
+                            <button class="btn btn-primary" @click="c.displayLog = !c.displayLog">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                                </svg>
+                                <span  vg-content='c.t("show-log")'></span>
+                            </button>
+                        </div>
+                    </div>
+
+
+                    <div class="row justify-content-center">
                         <div class="box p-2">
                             <div class="bitcode">
                                 <div vg-for="c.bits" vg-key="key"> 
@@ -169,308 +208,277 @@
                                 </div>
                             </div>
                         </div>
-                </div>
-               
+                    </div>
                 
-                <div class="row justify-content-start">
-                    <div class="col col-3 p-2 bg timestamp">
+                    <div vg-if="c.displayLog" class="row justify-content-start light">
+                        <div class="col-md-3 bg">
+                        </div>
+                        <div class="col-md-9 bg">
+                            <span vg-content='c.t("log-parsed")'></span>
+                        </div>
                     </div>
-                    <div class="col col-3 p-2 bg timestamp">
-                        <span vg-content='c.t("log-generation-started")'></span>
+                    <div vg-if="c.displayLog" class="row justify-content-start">
+                        <div class="col-md-3 bg timestamp">
+                        </div>
+                        <div class="col-md-9 bg timestamp">
+                            <span vg-content='c.t("log-time")'></span>: <span vg-content='c.rTime'></span> (<span vg-content='c.rTimestamp'></span>)
+                        </div>
                     </div>
-                    <div class="col col-3 p-2 bg timestamp">
-                        <span vg-content='c.oTime'></span>
+                    <div vg-if="c.displayLog" class="row justify-content-start">
+                        <div class="col-md-3 bg precision">
+                        </div>
+                        <div class="col-md-9 bg precision">
+                            <span vg-content='c.t("log-precision")'></span>: <span vg-content='c.rMilli'></span>
+                        </div>
                     </div>
+                    <div vg-if="c.displayLog" class="row justify-content-start">
+                        <div class="col-md-3 bg counter">
+                        </div>
+                        <div class="col-md-9 bg counter">
+                            <span vg-content='c.t("log-counter")'></span>:  <span vg-content='c.rCounter'></span>
+                        </div>
+                    </div>
+                    <div vg-if="c.displayLog" class="row justify-content-start">
+                        <div class="col-md-3 bg node">
+                        </div>
+                        <div class="col-md-9 bg node">
+                            <span vg-content='c.t("log-node")'></span>: <span vg-content='c.rNode'></span>
+                        </div>
+                    </div>
+                    
+                    
+                    <div vg-if="c.displaySettings" class="row justify-content-end">
+                        <div class="col-md-3 d-flex justify-content-center p-2">
+                            <label for="iprecision" vg-content='c.t("tune-precision")' class="light"></label>
+                            <input type="number" id="iprecision" class="form-control" min="1" max="64" :value='c.subsecondPrecisionLength' @change='c.subsecondPrecisionLength, _= strconv.Atoi(event.PropString("target", "value"))'>
+                        </div>
+                        <div class="col-md-3 d-flex justify-content-center p-2">
+                            <label for="icounter" vg-content='c.t("tune-counter")'  class="light"></label>
+                            <input type="number" id="icounter" class="form-control" min="1" max="64" :value='c.counterPrecisionLength' @change='c.counterPrecisionLength, _= strconv.Atoi(event.PropString("target", "value"))'>
+                        </div>
+                        <div class="col-md-3 d-flex justify-content-center p-2">
+                            <label for="inodelength" vg-content='c.t("tune-node-length")'  class="light"></label>
+                            <input type="number" id="inodelength" class="form-control" min="1" max="16" :value='c.nodePrecisionLength'  @change='c.nodePrecisionLength, _= strconv.Atoi(event.PropString("target", "value"))'>
+                        </div>
+                        <div class="col-md-3 d-flex justify-content-center p-2">
+                            <label for="inodevalue" vg-content='c.t("tune-node-value")'  class="light" ></label>
+                            <input type="number" id="inodevalue" class="form-control" min="1" max="65355" :value='c.node' @change='c.node, _= strconv.ParseUint(event.PropString("target", "value"), 10,64)'>
+                        </div>
+                        
+                    </div>
+                    <div class="row p-4"></div>
                 </div>
-                <div class="row justify-content-start">
-                    <div class="col col-3 p-2 bg timestamp">
-                    </div>
-                    <div class="col col-3 p-2 bg timestamp">
-                        <span vg-content='c.t("log-time")'></span>
-                    </div>
-                    <div class="col col-3 p-2 bg timestamp">
-                        <span vg-content='c.rTime'></span> (<span vg-content='c.rTimestamp'></span>)
-                    </div>
-                </div>
-                <div class="row justify-content-start">
-                    <div class="col col-3 p-2 bg precision">
-                    </div>
-                    <div class="col col-3 p-2 bg precision">
-                        <span vg-content='c.t("log-precision")'></span>
-                    </div>
-                    <div class="col col-3 p-2 bg precision">
-                        <span vg-content='c.rMilli'></span>
-                    </div>
-                </div>
-                <div class="row justify-content-start">
-                    <div class="col col-3 p-2 bg counter">
-                    </div>
-                    <div class="col col-3 p-2 bg counter">
-                        <span vg-content='c.t("log-counter")'></span>
-                    </div>
-                    <div class="col col-3 p-2 bg counter">
-                        <span vg-content='c.rCounter'></span>
-                    </div>
-                </div>
-                <div class="row justify-content-start">
-                    <div class="col col-3 p-2 bg node">
-                    </div>
-                    <div class="col col-3 p-2 bg node">
-                        <span vg-content='c.t("log-node")'></span>
-                    </div>
-                    <div class="col col-3 p-2 bg node">
-                        <span vg-content='c.rNode'></span>
-                    </div>
-                </div>
-                 <div class="row justify-content-end uuid-text">
-                    <div class="col col-2 d-flex justify-content-center p-2">
-                        <span vg-content='c.t("tune-precision")'></span>
-                    </div>
-                    <div class="col col-2 d-flex justify-content-center p-2">
-                        <span vg-content='c.t("tune-counter")'></span>
-                    </div>
-                    <div class="col col-2 d-flex justify-content-center p-2">
-                        <span vg-content='c.t("tune-node-length")'></span>
-                    </div>
-                    <div class="col col-2 d-flex justify-content-center p-2">
-                        <span vg-content='c.t("tune-node-value")'></span>
-                    </div>
-                    <div class="col col-3 d-flex justify-content-center p-2">
-                        <span vg-content='c.t("tune")'></span>
-                    </div>
-                </div>
-                <div class="row justify-content-end">
-                    <div class="col col-2 d-flex justify-content-center p-2">
-                        <input type="number" class="form-control" min="1" max="64" :value='c.subsecondPrecisionLength' @change='c.subsecondPrecisionLength, _= strconv.Atoi(event.PropString("target", "value"))'>
-                    </div>
-                    <div class="col col-2 d-flex justify-content-center p-2">
-                        <input type="number" class="form-control" min="1" max="64" :value='c.counterPrecisionLength' @change='c.counterPrecisionLength, _= strconv.Atoi(event.PropString("target", "value"))'>
-                    </div>
-                    <div class="col col-2 d-flex justify-content-center p-2">
-                        <input type="number" class="form-control" min="1" max="16" :value='c.nodePrecisionLength'  @change='c.nodePrecisionLength, _= strconv.Atoi(event.PropString("target", "value"))'>
-                    </div>
-                    <div class="col col-2 d-flex justify-content-center p-2">
-                        <input type="number" class="form-control" min="1" max="65355" :value='c.node' @change='c.node, _= strconv.ParseUint(event.PropString("target", "value"), 10,64)'>
-                    </div>
-                    <div class="col col-3 d-flex justify-content-center p-2">
-                        <button class="btn btn-primary" @click="c.GetNewUUID(event)">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
-                                <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
-                            </svg>
-                            <span  vg-content='c.t("get-new")'></span>
-                        </button>
-                    </div>
-                </div>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-8 pt-4">
+                            <p>
+                                <span class="timestamp explain bg"  vg-content='c.t("unix-timestamp")'>Unix timestamp</span> &ndash; 
+                                <span vg-content='c.t("unix-timestamp-description")'></span>
+                            </p>
+                            <p>
+                                <span class="precision explain bg"  vg-content='c.t("precision")'>Sub-second precision</span> &ndash; 
+                                <span vg-content='c.t("precision-description")'></span>
+                            </p>
 
-            </div>
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col col-8 pt-4">
-                        <p>
-                            <span class="timestamp explain bg"  vg-content='c.t("unix-timestamp")'>Unix timestamp</span> &ndash; 
-                            <span vg-content='c.t("unix-timestamp-description")'></span>
-                        </p>
-                        <p>
-                            <span class="precision explain bg"  vg-content='c.t("precision")'>Sub-second precision</span> &ndash; 
-                            <span vg-content='c.t("precision-description")'></span>
-                        </p>
+                            <p>
+                                <span class="counter explain bg"  vg-content='c.t("counter")'>Counter</span> &ndash; 
+                                <span vg-content='c.t("counter")'></span>
+                            </p>
 
-                        <p>
-                            <span class="counter explain bg"  vg-content='c.t("counter")'>Counter</span> &ndash; 
-                            <span vg-content='c.t("counter")'></span>
-                        </p>
+                            <p>
+                                <span class="node explain bg"  vg-content='c.t("node")'>Node</span> &ndash; 
+                                <span vg-content='c.t("node-description")'></span>
+                            </p>
 
-                        <p>
-                            <span class="node explain bg"  vg-content='c.t("node")'>Node</span> &ndash; 
-                            <span vg-content='c.t("node-description")'></span>
-                        </p>
+                            <p>
+                                <span class="random explain bg"  vg-content='c.t("random")'>random</span> &ndash; 
+                                <span vg-content='c.t("random-description")'></span>
+                            </p>
 
-                        <p>
-                            <span class="random explain bg"  vg-content='c.t("random")'>random</span> &ndash; 
-                            <span vg-content='c.t("random-description")'></span>
-                        </p>
-
-                        <p>
-                            <span class="version explain bg"  vg-content='c.t("version")'>version</span> &ndash; 
-                            <span vg-content='c.t("version-description")'></span>
-                        </p>
-                        <p>
-                            <span class="variant explain bg"  vg-content='c.t("variant")'>variant</span> &ndash; 
-                            <span vg-content='c.t("variant-description")'></span>
-                        </p>
+                            <p>
+                                <span class="version explain bg"  vg-content='c.t("version")'>version</span> &ndash; 
+                                <span vg-content='c.t("version-description")'></span>
+                            </p>
+                            <p>
+                                <span class="variant explain bg"  vg-content='c.t("variant")'>variant</span> &ndash; 
+                                <span vg-content='c.t("variant-description")'></span>
+                            </p>
+                        </div>
                     </div>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col col-8">
-                        <p vg-content='c.t("encoding-intro")'>
-                            Special mention to our amazing counter precision encoding algorithm.
-                        </p>
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            <p vg-content='c.t("encoding-intro")'>
+                                Special mention to our amazing counter precision encoding algorithm.
+                            </p>
+                        </div>
                     </div>
+
                 </div>
 
-            </div>
+            </main>
 
-        </main>
-
-        <footer class="footer">
-            <div class="container">
-                <div class="row pt-5 justify-content-center">
-                    <div class="col col-8">
-                        <p><a href="https://datatracker.ietf.org/doc/draft-peabody-dispatch-new-uuid-format/" vg-content='c.t("footer-ietf")'>IETF: New UUID formats</a></p>
-                        <p><a href="https://github.com/uuid6/uuid6-ietf-draft" vg-content='c.t("footer-github-draft")'>Github: uuid6-ietf-draft</a></p>
-                        <p><a href="https://github.com/uuid6/uuid6go-proto" vg-content='c.t("footer-golang-gen")'>golang generator uuid6go-proto</a></p>
-                        <p><a href="https://vugu.org" vg-content='c.t("footer-vugu")'>site written in vugu</a></p>
-                        <p><span vg-content='c.t("footer-contact")'></span> <a href="mailto:brad@peabody.io" vg-content='c.t("footer-peabody")'>Brad G. Peabody</a> <span vg-content='c.t("footer-and")'></span> <a href="mailto:kydavis@cisco.com" vg-content='c.t("footer-davis")'>Kyzer R. Davis</a></p>
-                        <p class="text-end" vg-content='c.t("footer-copyright")'>Copyright &copy; 2021</p>
-                        <p class="text-end">
-                            Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
-                        </p>
+            <footer class="footer">
+                <div class="container">
+                    <div class="row pt-5 justify-content-center">
+                        <div class="col-md-8">
+                            <p><a href="https://datatracker.ietf.org/doc/draft-peabody-dispatch-new-uuid-format/" vg-content='c.t("footer-ietf")'>IETF: New UUID formats</a></p>
+                            <p><a href="https://github.com/uuid6/uuid6-ietf-draft" vg-content='c.t("footer-github-draft")'>Github: uuid6-ietf-draft</a></p>
+                            <p><a href="https://github.com/uuid6/uuid6go-proto" vg-content='c.t("footer-golang-gen")'>golang generator uuid6go-proto</a></p>
+                            <p><a href="https://vugu.org" vg-content='c.t("footer-vugu")'>site written in vugu</a></p>
+                            <p><span vg-content='c.t("footer-contact")'></span> <a href="mailto:brad@peabody.io" vg-content='c.t("footer-peabody")'>Brad G. Peabody</a> <span vg-content='c.t("footer-and")'></span> <a href="mailto:kydavis@cisco.com" vg-content='c.t("footer-davis")'>Kyzer R. Davis</a></p>
+                            <p class="text-end" vg-content='c.t("footer-copyright")'>Copyright &copy; 2021</p>
+                            <p class="text-end">
+                                Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+                            </p>
+                        </div>
                     </div>
-                </div>
-            </div>    
-        </footer>
-    </div>
-</body>
+                </div>    
+            </footer>
+        </div>
+    </body>
 
-<script type="application/x-go">
- import (
-	uuid "github.com/uuid6/uuid6go-proto"
-    "time"
-    "strconv"
-)
-
-
-type Root struct {
-    selected string `vugu:"data"`
-    counterPrecisionLength int `vugu:"data"`
-    nodePrecisionLength int `vugu:"data"`
-    node uint64 `vugu:"data"`
-    rTime time.Time `vugu:"data"`
-    oTime time.Time `vugu:"data"`
-    rNode uint64 `vugu:"data"`
-    rCounter uint64 `vugu:"data"`
-    rMilli float64 `vugu:"data"`
-    rTimestamp uint64 `vugu:"data"`
-    subsecondPrecisionLength int `vugu:"data"`
-    bits []bool `vugu:"data"`
-    uuid string `vugu:"data"`
-    lang string `vugu:"data"`
-}
+    <script type="application/x-go">
+    import (
+        uuid "github.com/uuid6/uuid6go-proto"
+        "time"
+        "strconv"
+    )
 
 
-func (c *Root) Init(ctx vugu.InitCtx) {
-        initTranslation()
-        var gen uuid.UUIDv7Generator
-        c.counterPrecisionLength = 8
-        c.nodePrecisionLength = 4
-        c.node = 7
-        c.subsecondPrecisionLength = 16
-        c.lang = "en-US"
-		gen.CounterPrecisionLength = c.counterPrecisionLength
-		gen.NodePrecisionLength = c.nodePrecisionLength
-		gen.Node = c.node
-		gen.SubsecondPrecisionLength = c.subsecondPrecisionLength
-
-        c.oTime = time.Now()
-        var uid = gen.Next()
-        
-        c.rTime = uid.Time()
-        c.rTimestamp = uid.Timestamp()
-        c.rMilli , c.rCounter, c.rNode = gen.Parse(&uid)
-
-
-        c.bits = uid.ToBitArray();
-        c.uuid = uid.ToString();
-}
-
-func (c *Root) t(str string) string {
-    return translate(c.lang, str)
-}
-
-
-func (c *Root) getClass(key int) string {
-    class := ""
-    if key < 36 {
-        class = "timestamp"
-    } else if  key == 48 || key == 49 || key == 50 || key == 51 {
-        class = "version"
-    } else if  key == 64 || key == 65 {
-        class = "variant"
-    } else if c.subsecondPrecisionLength !=0 && key < indexer(c.subsecondPrecisionLength+1) {
-        class = "precision"
-    } else if c.counterPrecisionLength !=0 && key < indexer(c.subsecondPrecisionLength+c.counterPrecisionLength+1) {
-        class = "counter"
-    } else if c.nodePrecisionLength !=0 && key < indexer(c.subsecondPrecisionLength+c.counterPrecisionLength+c.nodePrecisionLength+1) {
-        class = "node"
-    } else {
-        class = "random"
+    type Root struct {
+        selected string `vugu:"data"`
+        displayLog bool `vugu:"data"`
+        displaySettings bool `vugu:"data"`
+        counterPrecisionLength int `vugu:"data"`
+        nodePrecisionLength int `vugu:"data"`
+        node uint64 `vugu:"data"`
+        rTime time.Time `vugu:"data"`
+        oTime time.Time `vugu:"data"`
+        rNode uint64 `vugu:"data"`
+        rCounter uint64 `vugu:"data"`
+        rMilli float64 `vugu:"data"`
+        rTimestamp uint64 `vugu:"data"`
+        subsecondPrecisionLength int `vugu:"data"`
+        bits []bool `vugu:"data"`
+        uuid string `vugu:"data"`
+        lang string `vugu:"data"`
     }
 
-    return class
-}
 
-func (c *Root) display( value bool) string {
-    val := "0" 
-    if value {
-        val = "1"
+    func (c *Root) Init(ctx vugu.InitCtx) {
+            initTranslation()
+            var gen uuid.UUIDv7Generator
+            c.counterPrecisionLength = 8
+            c.nodePrecisionLength = 4
+            c.node = 7
+            c.subsecondPrecisionLength = 16
+            c.lang = "en-US"
+            gen.CounterPrecisionLength = c.counterPrecisionLength
+            gen.NodePrecisionLength = c.nodePrecisionLength
+            gen.Node = c.node
+            gen.SubsecondPrecisionLength = c.subsecondPrecisionLength
+
+            c.oTime = time.Now()
+            var uid = gen.Next()
+            
+            c.rTime = uid.Time()
+            c.rTimestamp = uid.Timestamp()
+            c.rMilli , c.rCounter, c.rNode = gen.Parse(&uid)
+
+
+            c.bits = uid.ToBitArray();
+            c.uuid = uid.ToString();
     }
 
-    return val
-}
-
-func (c *Root) setLang(event vugu.DOMEvent, lang string) {
-    ee := event.EventEnv()
-
-    go func() {
-        
-        ee.Lock()
-        c.lang = lang
-        defer ee.UnlockRender()
-    }()
-}
-
-func (c *Root) GetNewUUID(event vugu.DOMEvent) {
-    ee := event.EventEnv()
-
-    go func() {
-        var gen uuid.UUIDv7Generator
-		gen.CounterPrecisionLength = c.counterPrecisionLength
-		gen.NodePrecisionLength = c.nodePrecisionLength
-		gen.Node = c.node
-		gen.SubsecondPrecisionLength = c.subsecondPrecisionLength
-        c.oTime = time.Now()
-
-        var uid = gen.Next()
-        
-        c.rTime = uid.Time()
-        c.rTimestamp = uid.Timestamp()
-        c.rMilli , c.rCounter, c.rNode = gen.Parse(&uid)
-
-        ee.Lock()
-        c.bits = uid.ToBitArray();
-        c.uuid = uid.ToString();
-        defer ee.UnlockRender()
-    }()
-}
-
-// indexer returns updated index of a bit in the array of bits. It skips bits 48-51 and 64,65
-// for those containt information about Version and Variant and can't be populated by the
-// precision bits. It also omits first 36 bits of timestamp at the beginning of the GUID
-func indexer(input int) int {
-	out := 35 + input //Skip the TS block and start counting right after ts block
-	if input > 11 {   //If we are bumbing into a ver block, skip it
-		out += 4
-	}
-
-	if input > 23 { //If we are bumping into a var block
-		out += 2
-	}
-	return out
-}
+    func (c *Root) t(str string) string {
+        return translate(c.lang, str)
+    }
 
 
+    func (c *Root) getClass(key int) string {
+        class := ""
+        if key < 36 {
+            class = "timestamp"
+        } else if  key == 48 || key == 49 || key == 50 || key == 51 {
+            class = "version"
+        } else if  key == 64 || key == 65 {
+            class = "variant"
+        } else if c.subsecondPrecisionLength !=0 && key < indexer(c.subsecondPrecisionLength+1) {
+            class = "precision"
+        } else if c.counterPrecisionLength !=0 && key < indexer(c.subsecondPrecisionLength+c.counterPrecisionLength+1) {
+            class = "counter"
+        } else if c.nodePrecisionLength !=0 && key < indexer(c.subsecondPrecisionLength+c.counterPrecisionLength+c.nodePrecisionLength+1) {
+            class = "node"
+        } else {
+            class = "random"
+        }
+
+        return class
+    }
+
+    func (c *Root) display( value bool) string {
+        val := "0" 
+        if value {
+            val = "1"
+        }
+
+        return val
+    }
+
+    func (c *Root) setLang(event vugu.DOMEvent, lang string) {
+        ee := event.EventEnv()
+
+        go func() {
+            
+            ee.Lock()
+            c.lang = lang
+            defer ee.UnlockRender()
+        }()
+    }
+
+    func (c *Root) GetNewUUID(event vugu.DOMEvent) {
+        ee := event.EventEnv()
+
+        go func() {
+            var gen uuid.UUIDv7Generator
+            gen.CounterPrecisionLength = c.counterPrecisionLength
+            gen.NodePrecisionLength = c.nodePrecisionLength
+            gen.Node = c.node
+            gen.SubsecondPrecisionLength = c.subsecondPrecisionLength
+            c.oTime = time.Now()
+
+            var uid = gen.Next()
+            
+            c.rTime = uid.Time()
+            c.rTimestamp = uid.Timestamp()
+            c.rMilli , c.rCounter, c.rNode = gen.Parse(&uid)
+
+            ee.Lock()
+            c.bits = uid.ToBitArray();
+            c.uuid = uid.ToString();
+            defer ee.UnlockRender()
+        }()
+    }
+
+    // indexer returns updated index of a bit in the array of bits. It skips bits 48-51 and 64,65
+    // for those containt information about Version and Variant and can't be populated by the
+    // precision bits. It also omits first 36 bits of timestamp at the beginning of the GUID
+    func indexer(input int) int {
+        out := 35 + input //Skip the TS block and start counting right after ts block
+        if input > 11 {   //If we are bumbing into a ver block, skip it
+            out += 4
+        }
+
+        if input > 23 { //If we are bumping into a var block
+            out += 2
+        }
+        return out
+    }
 
 
 
-</script>
+
+
+    </script>
+
+</html>

@@ -16,6 +16,8 @@ func initTranslation() {
 	requirements in the most efficient possible way.`
 	tdta["en-US"]["intro-uuid7"] = "Instead we are introducing UUIDv7. Take a look, we have a freshly generated UUIDv7 right here:"
 	tdta["en-US"]["get-new"] = "Get new UUID"
+	tdta["en-US"]["show-settings"] = "Generator settings"
+	tdta["en-US"]["show-log"] = "Show encoded data"
 	tdta["en-US"]["unix-timestamp"] = "Unix timestamp"
 	tdta["en-US"]["precision"] = "Sub-second precision"
 	tdta["en-US"]["counter"] = "Counter"
@@ -44,12 +46,11 @@ func initTranslation() {
 	tdta["en-US"]["tune-counter"] = "Counter length"
 	tdta["en-US"]["tune-node-length"] = "Node length"
 	tdta["en-US"]["tune-node-value"] = "Node value"
-	tdta["en-US"]["tune"] = "Dial in some settings and press the button below"
-	tdta["en-US"]["log-generation-started"] = "Value generation initiated on"
-	tdta["en-US"]["log-time"] = "Resulting time stored in UUID"
-	tdta["en-US"]["log-precision"] = "Resulting precision from this UUID"
-	tdta["en-US"]["log-counter"] = "Counter received from UUID"
-	tdta["en-US"]["log-node"] = "Node value after parsing"
+	tdta["en-US"]["log-parsed"] = "Data parsed from this UUID"
+	tdta["en-US"]["log-time"] = "Time"
+	tdta["en-US"]["log-precision"] = "Nanoseconds"
+	tdta["en-US"]["log-counter"] = "Counter"
+	tdta["en-US"]["log-node"] = "Node"
 
 	tdta["ru-RU"] = make(map[string]string)
 	tdta["ru-RU"]["hello-uuid7"] = "Встречайте, UUID 7! 🎉"
@@ -59,6 +60,8 @@ func initTranslation() {
 	Более того, идентификатор устойчив к коллизиям и подбору, что уменьшает риски связанные с безопасностью. Ни одна из существующих версий UUID (1-4) обладает всеми вышеописанными приемуществами.`
 	tdta["ru-RU"]["intro-uuid7"] = "Представляем вам UUID версии 7. Взгляните сами, вот свежесгенерированный идентификатор:"
 	tdta["ru-RU"]["get-new"] = "Хочу ещё один"
+	tdta["ru-RU"]["show-settings"] = "Настройки"
+	tdta["ru-RU"]["show-log"] = "Показать данные"
 	tdta["ru-RU"]["unix-timestamp"] = "Unix timestamp"
 	tdta["ru-RU"]["precision"] = "Субсекундная точность"
 	tdta["ru-RU"]["counter"] = "Счётчик"
@@ -88,11 +91,10 @@ func initTranslation() {
 	tdta["ru-RU"]["tune-counter"] = "Биты счётчика"
 	tdta["ru-RU"]["tune-node-length"] = "Биты узла"
 	tdta["ru-RU"]["tune-node-value"] = "Значение узла"
-	tdta["ru-RU"]["tune"] = "Подкрути ручки управления и жми на эту кнопку!"
 
-	tdta["ru-RU"]["log-generation-started"] = "Создание этого UUID началось в"
-	tdta["ru-RU"]["log-time"] = "Время, полученное из UUID после парсинга"
-	tdta["ru-RU"]["log-precision"] = "Суб-секундная точность"
+	tdta["ru-RU"]["log-parsed"] = "Данные, извлечённые из этого UUID"
+	tdta["ru-RU"]["log-time"] = "Время"
+	tdta["ru-RU"]["log-precision"] = "Наносекунды"
 	tdta["ru-RU"]["log-counter"] = "Счётчик"
 	tdta["ru-RU"]["log-node"] = "Узел"
 
