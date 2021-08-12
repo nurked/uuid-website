@@ -214,7 +214,7 @@
                         <div class="col-md-3 bg">
                         </div>
                         <div class="col-md-9 bg">
-                            <span vg-content='c.t("log-parsed")'></span>
+                            <span vg-content='c.t("log-parsed")'></span> (<span vg-content='c.oTime'></span>)
                         </div>
                     </div>
                     <div vg-if="c.displayLog" class="row justify-content-start">
@@ -312,6 +312,17 @@
                             </p>
                         </div>
                     </div>
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            <label for="playvalue" vg-content='c.t("play-precision-value")'></label>
+                            <input type="number" min="1" max="9999999999" :value="c.playValue" class="form-control" @change='c.play(event, event.PropString("target", "value"))'></input>
+                            <label for="playprecision" vg-content='c.t("play-precision-precision")'></label>
+                            <input type="number" min="1" max="127" :value="c.playPrecision" class="form-control" @change='c.playPrecision, _= strconv.Atoi(event.PropString("target", "value"))'></input>
+                            <span vg-content='c.t("play-precision-result")'></span>:
+                            <span vg-content="c.playResult"></span>
+                        </div>
+                    </div>
+
 
                 </div>
 
@@ -326,6 +337,7 @@
                             <p><a href="https://github.com/uuid6/uuid6go-proto" vg-content='c.t("footer-golang-gen")'>golang generator uuid6go-proto</a></p>
                             <p><a href="https://vugu.org" vg-content='c.t("footer-vugu")'>site written in vugu</a></p>
                             <p><span vg-content='c.t("footer-contact")'></span> <a href="mailto:brad@peabody.io" vg-content='c.t("footer-peabody")'>Brad G. Peabody</a> <span vg-content='c.t("footer-and")'></span> <a href="mailto:kydavis@cisco.com" vg-content='c.t("footer-davis")'>Kyzer R. Davis</a></p>
+                            <p><span vg-content='c.t("footer-site-support")'></span> <a href="mailto:ivan@roganov.me" vg-content='c.t("footer-roganov")'>Ivan Roganov</a></p>
                             <p class="text-end" vg-content='c.t("footer-copyright")'>Copyright &copy; 2021</p>
                             <p class="text-end">
                                 Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
@@ -342,6 +354,8 @@
         uuid "github.com/uuid6/uuid6go-proto"
         "time"
         "strconv"
+        "math"
+        "encoding/binary"
     )
 
 
@@ -362,6 +376,9 @@
         bits []bool `vugu:"data"`
         uuid string `vugu:"data"`
         lang string `vugu:"data"`
+        playValue int `vugu:"data"`
+        playPrecision int `vugu:"data"`
+        playResult float64 `vugu:"data"`
     }
 
 
@@ -388,6 +405,9 @@
 
             c.bits = uid.ToBitArray();
             c.uuid = uid.ToString();
+
+            c.playValue = 1234567890
+            c.playPrecision = 8
     }
 
     func (c *Root) t(str string) string {
@@ -434,6 +454,45 @@
             c.lang = lang
             defer ee.UnlockRender()
         }()
+    }
+
+    func (c *Root) play( event vugu.DOMEvent, str string) {
+        val, _ := strconv.Atoi(str)
+        
+        tmp, _ := encodeDecimal(float64(val), c.playPrecision)
+        playVal, _ := decodeDecimal(tmp, c.playPrecision)
+        ee := event.EventEnv()
+
+        go func() {
+            
+            ee.Lock()
+            c.playValue = val
+            c.playResult = playVal
+            defer ee.UnlockRender()
+        }()
+    }
+
+    func encodeDecimal(sec float64, bits int) (val []byte, err error) {
+        len := int(math.Log10(sec)) + 1
+        sec = sec / math.Pow10(len)
+        num := math.Pow(2, float64(bits))
+        var part uint64 = uint64(sec * float64(num))
+        val = make([]byte, 8)
+        binary.BigEndian.PutUint64(val, part)
+        return val, nil
+    }
+
+    func decodeDecimal(val []byte, bits int) (sec float64, err error) {
+        num := math.Pow(2, float64(bits))
+        ss := float64(toUint64(val)) / float64(num)
+        return ss, nil
+    }
+
+    // toUint64 converts []byte to uint64
+    func toUint64(data []byte) uint64 {
+        var arr [8]byte
+        copy(arr[len(arr)-len(data):], data)
+        return binary.BigEndian.Uint64(arr[:])
     }
 
     func (c *Root) GetNewUUID(event vugu.DOMEvent) {

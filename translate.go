@@ -40,8 +40,10 @@ func initTranslation() {
 	tdta["en-US"]["footer-contact"] = "Contact:"
 	tdta["en-US"]["footer-peabody"] = "Brad G. Peabody"
 	tdta["en-US"]["footer-davis"] = "Kyzer R. Davis"
+	tdta["en-US"]["footer-roganov"] = "Ivan Roganov"
+	tdta["en-US"]["footer-site-support"] = "Site support and programming:"
 	tdta["en-US"]["footer-and"] = "and"
-	tdta["en-US"]["footer-copyright"] = "Copyright"
+	tdta["en-US"]["footer-copyright"] = "© 2021, All rights reserved"
 	tdta["en-US"]["tune-precision"] = "Precision length"
 	tdta["en-US"]["tune-counter"] = "Counter length"
 	tdta["en-US"]["tune-node-length"] = "Node length"
@@ -51,6 +53,9 @@ func initTranslation() {
 	tdta["en-US"]["log-precision"] = "Nanoseconds"
 	tdta["en-US"]["log-counter"] = "Counter"
 	tdta["en-US"]["log-node"] = "Node"
+	tdta["en-US"]["play-precision-value"] = "Chose the value of milliseconds to encode"
+	tdta["en-US"]["play-precision-precision"] = "Amount of bits to use for encoding"
+	tdta["en-US"]["play-precision-result"] = "Encoded result"
 
 	tdta["ru-RU"] = make(map[string]string)
 	tdta["ru-RU"]["hello-uuid7"] = "Встречайте, UUID 7! 🎉"
@@ -84,8 +89,10 @@ func initTranslation() {
 	tdta["ru-RU"]["footer-contact"] = "Контакты:"
 	tdta["ru-RU"]["footer-peabody"] = "Brad G. Peabody"
 	tdta["ru-RU"]["footer-davis"] = "Kyzer R. Davis"
+	tdta["ru-RU"]["footer-roganov"] = "Иван Роганов"
+	tdta["ru-RU"]["footer-site-support"] = "Поддержка и обеспечение сайта:"
 	tdta["ru-RU"]["footer-and"] = "и"
-	tdta["ru-RU"]["footer-copyright"] = "Все права защищены"
+	tdta["ru-RU"]["footer-copyright"] = "© 2021, Все права защищены"
 
 	tdta["ru-RU"]["tune-precision"] = "Биты субсекундной точности"
 	tdta["ru-RU"]["tune-counter"] = "Биты счётчика"
@@ -97,6 +104,10 @@ func initTranslation() {
 	tdta["ru-RU"]["log-precision"] = "Наносекунды"
 	tdta["ru-RU"]["log-counter"] = "Счётчик"
 	tdta["ru-RU"]["log-node"] = "Узел"
+
+	tdta["ru-RU"]["play-precision-value"] = "Значение, которое будет закодировано"
+	tdta["ru-RU"]["play-precision-precision"] = "Количество бит, используемое для кодирования"
+	tdta["ru-RU"]["play-precision-result"] = "Результат"
 
 }
 
